@@ -13,7 +13,7 @@ To start, please run the following command:
  then open another terminal in VS code and run
 
  npm start --prefix client
-
+     
 
  Sign up for an account and enjoy!
 
