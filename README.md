@@ -5,7 +5,7 @@ To start, please run the following command:
  bundle install
 
  npm install --prefix client
-
+     
  sudo service postgresql start
 
  rails s
