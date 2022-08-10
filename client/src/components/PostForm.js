@@ -14,6 +14,6 @@ function PostForm( { handlePostSubmit, post } ){
             </form>
         </div>
     )
-}
+}     
 
 export default PostForm;
