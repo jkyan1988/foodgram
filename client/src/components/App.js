@@ -8,12 +8,13 @@ import PostForm from './PostForm';
 function App() {
   const [ user, setUser ] = useState(null);
   const [ post, setPost ] = useState([])
+  const [ comment, setComment ] = useState([])
 
-
-  const [newPost, setNewPost ] = useState({
-    post: "",
-    description: "",
-  });
+  useEffect(() => {
+    fetch('/comments')
+        .then((resp) => resp.json())
+        .then((comments) => setComment(comments))
+  }, []);
 
   useEffect(() => {
     fetch("/posts")
@@ -39,19 +40,8 @@ function App() {
       }
     });
   }
-
-  function handlePostSubmit(e) {
-    e.preventDefault();
-    fetch("/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPost),
-    }).then(r => r.json())
-      .then(newPost => setPost([newPost, ...post]))
-      e.target.reset()
-  }
+  const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
+  
   console.log(post)
 
   return (
@@ -60,21 +50,24 @@ function App() {
         <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
-          handlePostSubmit={handlePostSubmit}
+         
         />
         
     </div>
+        <PostForm/>
         <PostContainer 
           posts={post} 
-          handlePostSubmit={handlePostSubmit}
+          comments={comment}
+          commentsToDisplay={commentsToDisplay}
         />
 
         <div>
           <Switch>
             <Route path="/postform">
               <PostForm 
-                handlePostSubmit={handlePostSubmit} 
-                post={post}
+                post={post} 
+                setPost={setPost}
+                user={user}
               />
             </Route>
             <Route path="/postcontainer">

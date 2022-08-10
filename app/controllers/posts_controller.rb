@@ -1,17 +1,18 @@
 class PostsController < ApplicationController
-    skip_before_action :authorize, only: :index
+    skip_before_action :authorize, only: [:index, :show]
     before_action :find_post, only: [ :show, :update, :destroy]
     def index
         render json: Post.all
     end
 
     def create
+        
         post = @current_user.posts.create!(post_params)
         render json: post, status: :created
     end
 
     def show
-        render json: @post
+        render json: @post, serializer: PostWithCommentsSerializer
     end
 
     def update
