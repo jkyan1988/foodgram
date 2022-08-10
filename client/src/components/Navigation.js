@@ -3,6 +3,7 @@ import logo from "../images/instagramLogo.png";
 import searchIcon from "../images/searchIcon.png";
 import Menu from "./Menu.js";
 import {NavLink} from 'react-router-dom'
+import PostForm from './PostForm';
 
 function Navigation( { user, handleLogoutClick } ) {
     return(
@@ -15,7 +16,11 @@ function Navigation( { user, handleLogoutClick } ) {
                     <NavLink exact to="/">
                         <button onClick={handleLogoutClick}>Log Out</button>
                     </NavLink>
+                    <NavLink exact to="/postform">
+                        <PostForm />
+                    </NavLink>
                     </span>
+                    
             <div className="container">
                 <img className="logo" src={logo} alt="instagram logo" />
                 {/* <div className="search">

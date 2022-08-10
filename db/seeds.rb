@@ -19,7 +19,7 @@ end
 puts "Seeding posts..."
 
 10.times do
-    Post.create!(post: "https://picsum.photos/800/900", description: Faker::Restaurant.description)
+    Post.create!(post: "https://s3-media0.fl.yelpcdn.com/bphoto/z3Fg3G4ZESGrq5DaE5nnrA/o.jpg", description: Faker::Restaurant.description)
 end
 
 puts "Seeding comments..."
