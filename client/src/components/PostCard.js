@@ -1,13 +1,22 @@
 import '../styles/postcard.scss';
 import Comment from './Comment';
+import PostMenu from './PostMenu'
+import { ReactComponent as CardButton } from '../images/cardButton.svg';
+
+
+
 function PostCard( { post, comments } ){
 
 // const { id, comment } = comments
 
     return(
+    <div className="cards">
         <div className="card">
-            <header>header</header>
+            <header>header
+            <CardButton className="cardButton" />
+            </header>
             <img src={post.post} alt="" className="cardImage"/>
+            <PostMenu />
             <div>{post.description}</div>
             
             <div>
@@ -24,6 +33,7 @@ function PostCard( { post, comments } ){
             </div>
            
         </div>
+    </div>
     )
 }
 

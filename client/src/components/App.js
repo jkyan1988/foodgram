@@ -43,7 +43,7 @@ function App() {
   }
   // const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
   
-  console.log(post)
+
 
   return (
     <div>
@@ -55,11 +55,14 @@ function App() {
         />
         
     </div>
-        <PostForm/>
+        <PostForm
+          post={post} 
+          setPost={setPost}
+          user={user}
+        />
         <PostContainer 
           posts={post} 
           comments={comment}
-        
         />
 
         <div>
@@ -69,13 +72,13 @@ function App() {
                 post={post} 
                 setPost={setPost}
                 user={user}
-          
-            
-
               />
             </Route>
             <Route path="/postcontainer">
-              <PostContainer />
+              <PostContainer 
+                posts={post} 
+                comments={comment}
+              />
             </Route>
 
 

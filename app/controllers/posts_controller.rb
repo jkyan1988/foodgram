@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    skip_before_action :authorize, only: [:index, :show, :create ]
+    skip_before_action :authorize, only: [:index, :show ]
     before_action :find_post, only: [ :show, :update, :destroy]
     def index
         render json: Post.all
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:post, :description, :user_id)
+        params.permit(:post, :description)
     end
 
     def find_post

@@ -4,8 +4,9 @@ import React, { useState } from "react";
 function PostForm( { post, setPost, user } ){
     const [ postURL, setPostURL ] = useState("");
     const [ description, setDescription ] = useState("");
-    const newArray = {...post}
+
   
+    console.log(post)
 
     function handlePostSubmit(e) {
         e.preventDefault();
@@ -14,20 +15,18 @@ function PostForm( { post, setPost, user } ){
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json"
+            "Accepts": "application/json",
           },
           body: JSON.stringify(
             {
               post: postURL,
               description: description,
-              user_id: user.id,
             }
           ),
         }).then(r => r.json())
-          .then(newPost => setPost([newPost, newArray]))
+          .then(newPost => setPost([newPost, ...post]))
           e.target.reset()
       }
-      console.log(user)
     return(
         <div>
             <h3>New Post</h3>
