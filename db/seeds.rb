@@ -19,7 +19,7 @@ end
 puts "Seeding posts..."
 
 10.times do
-    Post.create!(post: "https://s3-media0.fl.yelpcdn.com/bphoto/z3Fg3G4ZESGrq5DaE5nnrA/o.jpg", description: Faker::Restaurant.description)
+    Post.create!(post: "https://s3-media0.fl.yelpcdn.com/bphoto/z3Fg3G4ZESGrq5DaE5nnrA/o.jpg", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
 end
 
 puts "Seeding comments..."

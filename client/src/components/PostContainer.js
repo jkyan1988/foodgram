@@ -3,7 +3,7 @@ import PostCard from './PostCard';
 import '../styles/postcontainer.scss';
 
 
-function PostContainer( { posts, comments, commentsToDisplay } ){
+function PostContainer( { posts, comments  } ){
 
     // const commentsToDisplay = comments.filter(comment => comment.post_id === posts.id)
 
@@ -15,7 +15,7 @@ function PostContainer( { posts, comments, commentsToDisplay } ){
                     key={post.id} 
                     post={post} 
                     comments={comments} 
-                    commentsToDisplay={commentsToDisplay}
+                 
                 /> 
                 
                 )})}

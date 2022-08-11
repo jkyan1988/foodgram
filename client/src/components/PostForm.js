@@ -1,34 +1,39 @@
 import React, { useState } from "react";
 
 
-function PostForm( { setPost, post, user } ){
+function PostForm( { post, setPost, user } ){
     const [ postURL, setPostURL ] = useState("");
     const [ description, setDescription ] = useState("");
-    const copyPostArray = {...post}
+    const newArray = {...post}
+  
 
     function handlePostSubmit(e) {
         e.preventDefault();
+        
         fetch("/posts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json"
           },
           body: JSON.stringify(
             {
               post: postURL,
               description: description,
+              user_id: user.id,
             }
           ),
         }).then(r => r.json())
-          .then(newPost => setPost([newPost, copyPostArray]))
+          .then(newPost => setPost([newPost, newArray]))
           e.target.reset()
       }
+      console.log(user)
     return(
         <div>
             <h3>New Post</h3>
             <form onSubmit={handlePostSubmit}>
-                <input onChange={(e) => setPostURL(e.target.value)} placeholder="Pic or Video" />
-                <input onChange={(e) => setDescription(e.target.value)} placeholder="Caption" />
+                <input onChange={(e) => setPostURL(e.target.value)} />
+                <input onChange={(e) => setDescription(e.target.value)} />
                 <button>Submit</button>
             </form>
         </div>

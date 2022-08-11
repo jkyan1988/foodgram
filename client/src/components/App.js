@@ -9,7 +9,8 @@ function App() {
   const [ user, setUser ] = useState(null);
   const [ post, setPost ] = useState([])
   const [ comment, setComment ] = useState([])
-
+  
+  
   useEffect(() => {
     fetch('/comments')
         .then((resp) => resp.json())
@@ -40,7 +41,7 @@ function App() {
       }
     });
   }
-  const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
+  // const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
   
   console.log(post)
 
@@ -58,7 +59,7 @@ function App() {
         <PostContainer 
           posts={post} 
           comments={comment}
-          commentsToDisplay={commentsToDisplay}
+        
         />
 
         <div>
@@ -68,6 +69,9 @@ function App() {
                 post={post} 
                 setPost={setPost}
                 user={user}
+          
+            
+
               />
             </Route>
             <Route path="/postcontainer">
