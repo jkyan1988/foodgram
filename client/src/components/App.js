@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import Login from "../pages/Login";
 import PostContainer from "./PostContainer";
 import PostForm from './PostForm';
+import PostCard from './PostCard';
 
 function App() {
   const [ user, setUser ] = useState(null);
@@ -63,6 +64,8 @@ function App() {
         <PostContainer 
           posts={post} 
           comments={comment}
+          user={user}
+          setPost={setPost}
         />
 
         <div>
@@ -78,7 +81,13 @@ function App() {
               <PostContainer 
                 posts={post} 
                 comments={comment}
+                user={user}
+                setPost={setPost}
               />
+            </Route>
+            <Route path="/postcard">
+              <PostCard posts={post}/>
+
             </Route>
 
 

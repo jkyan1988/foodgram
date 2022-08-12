@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    skip_before_action :authorize, only: [:index, :show ]
     before_action :find_comment, only: [ :show, :update, :destroy ]
 
     def index
@@ -11,7 +12,7 @@ class CommentsController < ApplicationController
     end
 
     def show
-        render json: @comment
+        render json: @comment, serializer: PostWithCommentsSerializer
     end
 
     def update
