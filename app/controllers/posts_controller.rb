@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     skip_before_action :authorize, only: [:index, :show ]
     before_action :find_post, only: [ :show, :update, :destroy]
     def index
-        render json: Post.all
+        render json: Post.all.order("created_at DESC")
     end
 
     def create
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     end
 
     def update
-        @post.update(post_params)
+        @post.update!(post_params)
         render json: @post, status: :accepted
     end
 
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:post, :description)
+        params.permit(:post, :description, :user_id)
     end
 
     def find_post

@@ -1,20 +1,21 @@
 import '../styles/postcard.scss';
 import Comment from './Comment';
 import PostMenu from './PostMenu'
-import { ReactComponent as CardButton } from '../images/cardButton.svg';
 import { TbPencil } from 'react-icons/tb';
 import React, { useState } from "react";
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 function PostCard( { post, comments, user, setPost, posts } ){
     const [currentPost, setCurrentPost] = useState(post) 
+    const [editPost, setEditPost] = useState(currentPost.post)
     const [editDescription, setEditDescription] = useState(currentPost.description)
     const [isEditing, setIsEditing] = useState(false)
    
     function handleDelete(id){
-        fetch(`http://localhost:9292/movies/${id}`,{
+        fetch(`/posts/${id}`,{
             method: "DELETE",
         })
-        const postToDisplay = posts.filter(movie => movie.id !== id)
+        const postToDisplay = posts.filter(post => post.id !== id)
         setPost(postToDisplay)
       }
 
@@ -26,22 +27,43 @@ function PostCard( { post, comments, user, setPost, posts } ){
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                post: editPost,
               description: editDescription,
             }),
-          })
-          .then((r) => r.json())
-          .then((updatedMovie) => setCurrentMovie(updatedMovie));
+        }).then((r) => r.json())
+          .then((updatedPost) => setCurrentPost(updatedPost));
           setIsEditing(false)
           e.target.reset()
+
+          
+          
+        //   .then(() => {
+        //     fetch(`/posts/${currentPost.id}`)
+        //       .then((response) => response.json())
+        //       .then(setPost);
+        //   });
+
         }
-// const { id, comment } = comments
-console.log(comments)
+
+
     return(
     <div className="cards">
         <div className="card">
             <header>{user.id}
-            <TbPencil className="cardButton" />
+            <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>
+            <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>
             </header>
+            <div style={isEditing === false ? {display: "none"} : {display: ""}}>
+                <h3>Edit Post</h3>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Post URL" onChange={(e) => setEditPost(e.target.value)}/>
+                    <input type="text" placeholder="Caption" onChange={(e) => setEditDescription(e.target.value)}/>
+                    <button>Submit</button>
+                    <button onClick={(e) => {
+                      e.stopPropagation()
+                      setIsEditing(false)}}>Cancel</button>
+                </form>
+            </div>
             <img src={post.post} alt="" className="cardImage"/>
             <PostMenu />
             <div>{post.description}</div>
