@@ -8,12 +8,12 @@ function PostContainer( { posts, comments, user, setPost  } ){
     // const commentsToDisplay = comments.filter(comment => comment.post_id === posts.id)
     
     return(
-        <div className="cards">
+        <div >
             {posts.map((post) => { 
                 return (
                 <PostCard 
                     key={post.id} 
-                    post={post} 
+                    selectedPost={post} 
                     comments={comments} 
                     user={user}
                     setPost={setPost}

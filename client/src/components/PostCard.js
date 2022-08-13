@@ -5,8 +5,8 @@ import { TbPencil } from 'react-icons/tb';
 import React, { useState } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
 
-function PostCard( { post, comments, user, setPost, posts } ){
-    const [currentPost, setCurrentPost] = useState(post) 
+function PostCard( { selectedPost, comments, user, setPost, posts, newArray, handleDelete } ){
+    const [currentPost, setCurrentPost] = useState(selectedPost) 
     const [editPost, setEditPost] = useState(currentPost.post)
     const [editDescription, setEditDescription] = useState(currentPost.description)
     const [isEditing, setIsEditing] = useState(false)
@@ -14,9 +14,15 @@ function PostCard( { post, comments, user, setPost, posts } ){
     function handleDelete(id){
         fetch(`/posts/${id}`,{
             method: "DELETE",
-        })
-        const postToDisplay = posts.filter(post => post.id !== id)
-        setPost(postToDisplay)
+        }).then(() => {
+            fetch(`/posts/${id}`)
+              .then((response) => response.json())
+              .then(setCurrentPost);
+          });
+        }
+
+      function refreshPage() {
+        window.location.reload(false);
       }
 
       function handleSubmit(e) {
@@ -31,10 +37,11 @@ function PostCard( { post, comments, user, setPost, posts } ){
               description: editDescription,
             }),
         }).then((r) => r.json())
-          .then((updatedPost) => setCurrentPost(updatedPost));
+          .then((updatedPost) => setCurrentPost([updatedPost, newArray]));
+      
           setIsEditing(false)
           e.target.reset()
-
+      
           
           
         //   .then(() => {
@@ -44,6 +51,7 @@ function PostCard( { post, comments, user, setPost, posts } ){
         //   });
 
         }
+       
 
 
     return(
@@ -58,15 +66,15 @@ function PostCard( { post, comments, user, setPost, posts } ){
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Post URL" onChange={(e) => setEditPost(e.target.value)}/>
                     <input type="text" placeholder="Caption" onChange={(e) => setEditDescription(e.target.value)}/>
-                    <button>Submit</button>
+                    <button onClick={refreshPage}>Submit</button>
                     <button onClick={(e) => {
                       e.stopPropagation()
                       setIsEditing(false)}}>Cancel</button>
                 </form>
             </div>
-            <img src={post.post} alt="" className="cardImage"/>
+            <img src={selectedPost.post} alt="" className="cardImage"/>
             <PostMenu />
-            <div>{post.description}</div>
+            <div>{selectedPost.description}</div>
             
             <div>
                 {/* {comments.filter((comment) => { 

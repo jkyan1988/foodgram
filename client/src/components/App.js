@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import PostContainer from "./PostContainer";
 import PostForm from './PostForm';
 import PostCard from './PostCard';
+import UserProfile from './UserProfile';
 
 function App() {
   const [ user, setUser ] = useState(null);
@@ -35,6 +36,7 @@ function App() {
 
   if (!user) return <Login onLogin={setUser} /> ;
 
+  const newArray = [...post]
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -43,19 +45,35 @@ function App() {
     });
   }
   // const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
-  
+  function handleDelete(id){
+    fetch(`/posts/${id}`,{
+        method: "DELETE",
+    })
+    const postToDisplay = post.filter(post => post.id !== id)
+    setPost(postToDisplay)
+  }
 
 
   return (
     <div>
     <div>
+      <Switch>
+        <Route path="/">
         <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
          
         />
+        </Route>
+      </Switch>
         
     </div>
+        <Switch>
+        
+        <Route path="/profile">
+              <UserProfile user={user} posts={post}/>
+            </Route>
+        </Switch>
         <PostForm
           post={post} 
           setPost={setPost}
@@ -67,9 +85,9 @@ function App() {
           user={user}
           setPost={setPost}
         />
-
         <div>
           <Switch>
+            
             <Route path="/postform">
               <PostForm 
                 post={post} 
@@ -86,7 +104,11 @@ function App() {
               />
             </Route>
             <Route path="/postcard">
-              <PostCard posts={post}/>
+              <PostCard 
+                posts={post}
+                newArray={newArray}
+                handleDelete={handleDelete}
+              />
 
             </Route>
 

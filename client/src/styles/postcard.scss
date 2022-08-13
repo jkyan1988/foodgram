@@ -1,6 +1,9 @@
 @import './properties';
 .cards {
   width: 600px;
+  display: flex;
+  justify-content: space-around;
+  margin: 18px 0px;
 }
 
 .card {
