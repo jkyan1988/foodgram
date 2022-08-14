@@ -10,7 +10,7 @@ function Navigation( { user, handleLogoutClick } ) {
         
         <div className="navigation">
                     <span> 
-                    <NavLink exact to="/me">
+                    <NavLink exact to="/profile">
                         <p>Welcome {user && user.username}!</p>
                     </NavLink>
                     <NavLink exact to="/">
@@ -20,12 +20,14 @@ function Navigation( { user, handleLogoutClick } ) {
                     </span>
                     
             <div className="container">
+                <NavLink exact to="/">
                 <img className="logo" src={logo} alt="instagram logo" />
+                </NavLink>
                 {/* <div className="search">
                     <img className="searchIcon" src={searchIcon} alt="search icon" />
                     <span className="searchText">Search</span>
                 </div> */}
-                <Menu />
+                <Menu user={user}/>
             </div>
             
         </div>

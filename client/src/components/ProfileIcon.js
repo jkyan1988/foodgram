@@ -1,7 +1,8 @@
 import "../styles/profileIcon.scss";
+import UserProfile from "./UserProfile";
 
 function ProfileIcon(props) {
-    const { iconSize, storyBorder, image } = props;
+    const { iconSize, storyBorder, image, user } = props;
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -18,7 +19,7 @@ function ProfileIcon(props) {
         <div className={storyBorder ? "storyBorder" : ""}>
             <img 
                 className={`profileIcon ${iconSize}`} 
-                src={profileImage} 
+                src={user.profile_pic} 
                 alt="profile"
             />
         </div>

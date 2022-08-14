@@ -3,16 +3,17 @@ class CommentsController < ApplicationController
     before_action :find_comment, only: [ :show, :update, :destroy ]
 
     def index
-        render json: Comment.all
+        render json: Comment.all.order("created_at DESC")
     end
 
     def create
+        
         comment = @current_user.comments.create!(comment_params)
         render json: comment, status: :created
     end
 
     def show
-        render json: @comment, serializer: PostWithCommentsSerializer
+        render json: @comment, serializer: CommentSerializer
     end
 
     def update
@@ -28,7 +29,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.permit(:comment, :description)
+        params.permit(:comment, :user_id, :post_id, :id)
     end
 
     def find_comment

@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     end
 
     def update
-        @post.update!(post_params)
+        @post.update(post_params)
         render json: @post, status: :accepted
     end
 

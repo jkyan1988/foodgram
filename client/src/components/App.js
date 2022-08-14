@@ -36,7 +36,7 @@ function App() {
 
   if (!user) return <Login onLogin={setUser} /> ;
 
-  const newArray = [...post]
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -45,13 +45,13 @@ function App() {
     });
   }
   // const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
-  function handleDelete(id){
-    fetch(`/posts/${id}`,{
-        method: "DELETE",
-    })
-    const postToDisplay = post.filter(post => post.id !== id)
-    setPost(postToDisplay)
-  }
+  // function handleDelete(id){
+  //   fetch(`/posts/${id}`,{
+  //       method: "DELETE",
+  //   })
+  //   const postToDisplay = post.filter(post => post.id !== id)
+  //   setPost(postToDisplay)
+  // }
 
 
   return (
@@ -84,6 +84,7 @@ function App() {
           comments={comment}
           user={user}
           setPost={setPost}
+          setComment={setComment}
         />
         <div>
           <Switch>
@@ -101,13 +102,14 @@ function App() {
                 comments={comment}
                 user={user}
                 setPost={setPost}
+                setComment={setComment}
               />
             </Route>
             <Route path="/postcard">
               <PostCard 
                 posts={post}
-                newArray={newArray}
-                handleDelete={handleDelete}
+                setComment={setComment}
+               
               />
 
             </Route>

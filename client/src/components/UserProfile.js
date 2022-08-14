@@ -18,7 +18,7 @@ function UserProfile( { user, posts }){
                     />
                 </div>
                 <div>
-                    <h4>James Kyan</h4>
+                    <h4>{user.username}</h4>
                     <div style={{display: "flex", justifyContent: "space-between", width:"108%"}}>
                         <h6>40 posts</h6>
                         <h6>40 followers</h6>
