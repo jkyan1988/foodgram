@@ -27,13 +27,23 @@ function Comment( { comment, setComment } ){
           window.location.reload(false);
         }
 
+        function handleDelete(id){
+          fetch(`/comments/${id}`,{
+              method: "DELETE",
+          }).then(() => {
+              fetch(`/comments/${id}`)
+                .then((response) => response.json())
+                .then(setComment);
+            });
+            window.location.reload(false);
+          }
     return(
         <div>
           
            <ul>
            <li>{comment.comment}    
            <TbPencil onClick={() => setIsEditing(true)}/>  
-           <RiDeleteBinLine /></li> 
+           <RiDeleteBinLine onClick={() => handleDelete(comment.id)}/></li> 
             </ul>
             <div style={isEditing === false ? {display: "none"} : {display: ""}}>
                 <EditComment handleSubmit={handleSubmit} setEditComment={setEditComment}/> 

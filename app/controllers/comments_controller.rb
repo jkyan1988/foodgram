@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
         render json: @comment, status: :accepted
     end
 
-    def destroy_all
+    def destroy
         @current_user.comments.destroy(find_comment)
         head :no_content
     end
