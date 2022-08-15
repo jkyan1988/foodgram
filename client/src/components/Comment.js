@@ -24,6 +24,7 @@ function Comment( { comment, setComment } ){
           .then((updatedComment) => setComment(updatedComment));
           setIsEditing(false)
           e.target.reset()
+          window.location.reload(false);
         }
 
     return(
@@ -35,10 +36,7 @@ function Comment( { comment, setComment } ){
            <RiDeleteBinLine /></li> 
             </ul>
             <div style={isEditing === false ? {display: "none"} : {display: ""}}>
-                <form onSubmit={handleSubmit}>
-                <input type="text" onChange={(e) => setEditComment(e.target.value)}/>
-                <button>Change</button>    
-                </form>  
+                <EditComment handleSubmit={handleSubmit} setEditComment={setEditComment}/> 
             </div> 
         </div>
     )

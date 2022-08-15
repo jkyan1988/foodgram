@@ -44,14 +44,7 @@ function App() {
       }
     });
   }
-  // const commentsToDisplay = comment.filter(comment => comment.post_id === post.id)
-  // function handleDelete(id){
-  //   fetch(`/posts/${id}`,{
-  //       method: "DELETE",
-  //   })
-  //   const postToDisplay = post.filter(post => post.id !== id)
-  //   setPost(postToDisplay)
-  // }
+ 
 
 
   return (
