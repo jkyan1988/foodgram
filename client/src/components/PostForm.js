@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function PostForm( { post, setPost, user } ){
+function PostForm( { post, setPost } ){
     const [ postURL, setPostURL ] = useState("");
     const [ description, setDescription ] = useState("");
 

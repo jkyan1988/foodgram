@@ -55,7 +55,6 @@ function App() {
         <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
-         
         />
         </Route>
       </Switch>
@@ -70,13 +69,10 @@ function App() {
         <PostForm
           post={post} 
           setPost={setPost}
-          user={user}
         />
         <PostContainer 
           posts={post} 
           comments={comment}
-          user={user}
-          setPost={setPost}
           setComment={setComment}
         />
         <div>
@@ -86,16 +82,13 @@ function App() {
               <PostForm 
                 post={post} 
                 setPost={setPost}
-                user={user}
               />
             </Route>
             <Route path="/postcontainer">
               <PostContainer 
-                posts={post} 
-                comments={comment}
-                user={user}
-                setPost={setPost}
-                setComment={setComment}
+                 posts={post} 
+                 comments={comment}
+                 setComment={setComment}
               />
             </Route>
             <Route path="/postcard">

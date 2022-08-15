@@ -1,6 +1,5 @@
 import '../styles/Navigation.scss';
 import logo from "../images/instagramLogo.png";
-import searchIcon from "../images/searchIcon.png";
 import Menu from "./Menu.js";
 import {NavLink} from 'react-router-dom'
 
@@ -23,10 +22,6 @@ function Navigation( { user, handleLogoutClick } ) {
                 <NavLink exact to="/">
                 <img className="logo" src={logo} alt="instagram logo" />
                 </NavLink>
-                {/* <div className="search">
-                    <img className="searchIcon" src={searchIcon} alt="search icon" />
-                    <span className="searchText">Search</span>
-                </div> */}
                 <Menu user={user}/>
             </div>
             

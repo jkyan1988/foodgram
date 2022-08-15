@@ -7,14 +7,8 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 
 function PostCard( { selectedPost, 
                     comments, 
-                    user, 
-                    setPost, 
                     posts, 
-                    newArray, 
-                    setComment,
-                    handleChange,
-                    newData,
-                    setNewData 
+                    setComment
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -58,9 +52,7 @@ function PostCard( { selectedPost,
           window.location.reload(false);
         }
 
-      // function refreshPage() {
-      //   window.location.reload(false);
-      // }
+     
 
       function handleSubmit(e) {
         e.preventDefault()
@@ -76,18 +68,9 @@ function PostCard( { selectedPost,
             }),
         }).then((r) => r.json())
           .then((updatedPost) => setCurrentPost([updatedPost, ...posts]));
-      
           setIsEditing(false)
           e.target.reset()
           window.location.reload(false);
-          
-          
-        //   .then(() => {
-        //     fetch(`/posts/${currentPost.id}`)
-        //       .then((response) => response.json())
-        //       .then(setPost);
-        //   });
-
         }
        
 
@@ -130,18 +113,7 @@ function PostCard( { selectedPost,
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
                     return (<Comment key={comment.id} comment={comment} setComment={setComment} />)
                    })} 
-                {/* {comments.filter((comment) => { 
-                    if (comment.post_id === post.id) {
-                return (
-                <Comment
-                    key={comment.id} 
-                    comment={comment} 
-                /> 
-                
-                )}})
-                } */}
-            </div>
-           
+            </div> 
         </div>
     </div>
     )
