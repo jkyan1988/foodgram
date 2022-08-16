@@ -4,6 +4,7 @@ import PostMenu from './PostMenu'
 import { TbPencil } from 'react-icons/tb';
 import React, { useState, useEffect } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
+import Likes from './Likes';
 
 function PostCard( { selectedPost, 
                     comments, 
@@ -94,7 +95,7 @@ function PostCard( { selectedPost,
                 </form>
             </div>
             <img src={selectedPost.post} alt="" className="cardImage"/>
-            <PostMenu />
+            <Likes />
             <div>{selectedPost.description}</div>
             
             <div>

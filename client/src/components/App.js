@@ -7,17 +7,20 @@ import PostForm from './PostForm';
 import PostCard from './PostCard';
 import UserProfile from './UserProfile';
 
+
 function App() {
   const [ user, setUser ] = useState(null);
   const [ post, setPost ] = useState([])
   const [ comment, setComment ] = useState([])
-  
-  
+
+ 
   useEffect(() => {
     fetch('/comments')
         .then((resp) => resp.json())
         .then((comments) => setComment(comments))
   }, []);
+
+  
 
   useEffect(() => {
     fetch("/posts")
@@ -45,7 +48,7 @@ function App() {
     });
   }
  
-
+  
 
   return (
     <div>
@@ -99,7 +102,7 @@ function App() {
               />
 
             </Route>
-
+            
 
 
           </Switch>

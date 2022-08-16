@@ -37,6 +37,7 @@ function Comment( { comment, setComment } ){
             });
             window.location.reload(false);
           }
+          
     return(
         <div>
           

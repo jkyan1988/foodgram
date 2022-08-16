@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     end
 
     def show
-        render json: @comment, serializer: CommentSerializer
+        render json: @comment, serializer: CommentWithUserSerializer
     end
 
     def update
