@@ -35,7 +35,7 @@ function UserProfile( { user, posts }){
                         <img className="item" alt="" src={post.post}/>    
                     )
                 })}
-                
+
                   
             </div>
         </div>
