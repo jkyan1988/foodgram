@@ -12,6 +12,8 @@ function App() {
   const [ user, setUser ] = useState(null);
   const [ post, setPost ] = useState([])
   const [ comment, setComment ] = useState([])
+  const [ likes, setLikes ] = useState([]);
+  const [ findUser, setFindUser ] = useState([]);
 
  
   useEffect(() => {
@@ -20,13 +22,25 @@ function App() {
         .then((comments) => setComment(comments))
   }, []);
 
-  
+  useEffect(() => {
+    fetch('/users')
+        .then((resp) => resp.json())
+        .then((users) => setFindUser(users))
+  }, []);
 
   useEffect(() => {
     fetch("/posts")
         .then((resp) => resp.json())
         .then((posts) => setPost(posts))
   }, []);
+
+  useEffect(() => {
+    fetch("/likes")
+        .then((resp) => resp.json())
+        .then((likes) => setLikes(likes))
+  }, []);
+
+
 
   useEffect(() => {
     // auto-login
@@ -47,9 +61,11 @@ function App() {
       }
     });
   }
+  // map the list of users then filter them by post.user_id
+  // const findUser = user.find(user => user.username === post.user_id)
+  // const mapUsers = findUser.map((user) => user.username)
+  // const filterMapUsers = mapUsers.filter((post) => post.user_id=== user.id )
  
-  
-
   return (
     <div>
     <div>
@@ -98,7 +114,9 @@ function App() {
               <PostCard 
                 posts={post}
                 setComment={setComment}
-               
+                likes={likes}
+                setLikes={setLikes}
+                setPost={setPost}
               />
 
             </Route>

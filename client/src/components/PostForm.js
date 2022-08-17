@@ -6,7 +6,7 @@ function PostForm( { post, setPost } ){
     const [ description, setDescription ] = useState("");
 
   
-    console.log(post)
+    // console.log(post)
 
     function handlePostSubmit(e) {
         e.preventDefault();

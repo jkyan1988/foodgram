@@ -8,6 +8,7 @@
 User.destroy_all
 Post.destroy_all
 Comment.destroy_all
+Like.destroy_all
 
 
 puts "Seeding users..."
@@ -38,6 +39,18 @@ Post.create!(post: "https://images.unsplash.com/photo-1488900128323-21503983a07e
 Post.create!(post: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
 Post.create!(post: "https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
 Post.create!(post: "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1656936632096-59fcacae533f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1657114774407-165a24536290?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1657089841529-af2740d9dc08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1656057339655-786cadf701a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1656057368376-5fbc70ccca82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1654796605349-015a7841f680?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://img.buzzfeed.com/buzzfeed-static/static/2016-05/23/15/enhanced/buzzfeed-prod-fastlane01/anigif_original-grid-image-20301-1464032543-1.gif?crop=400:400;0,0%7D", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://cdn.dribbble.com/users/3951514/screenshots/7288432/media/866b49d81c982fdecd5a22de44c5e677.gif", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://s-i.huffpost.com/gadgets/slideshows/332806/slide_332806_3310279_free.gif", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://i.pinimg.com/originals/68/91/d3/6891d3a9e553efbc664fa09fc3c92fda.gif", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://images.unsplash.com/photo-1659709521486-fb4bc2eb4c10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
+Post.create!(post: "https://bestanimations.com/Food/food-animated-gif-16.gif", description: Faker::Restaurant.description, user_id: User.all.ids.sample)
 
 
 puts "Seeding comments..."
@@ -45,5 +58,9 @@ puts "Seeding comments..."
     Comment.create!(comment: Faker::Quote.yoda, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
 end
 
+puts "Seeding likes..."
+30.times do 
+    Like.create!(user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+end
 
 puts "Seeding completed successfully"

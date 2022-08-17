@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     end
 
     def show
-        render json: @post, serializer: PostWithCommentsSerializer
+        render json: @post, serializer: UserWithPostsSerializer
     end
 
     def update

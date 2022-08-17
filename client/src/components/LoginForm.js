@@ -29,11 +29,11 @@ function LoginForm({ onLogin }) {
 
   return (
     
-     <div class="container">
-     <div class="box">
-       <div class="heading"></div>
-       <form class="login-form" onSubmit={handleSubmit}>
-         <div class="field">
+     <div className="container">
+     <div className="box">
+       <div className="heading"></div>
+       <form className="login-form" onSubmit={handleSubmit}>
+         <div className="field">
            <input
              id="username"
              type="name"
@@ -43,7 +43,7 @@ function LoginForm({ onLogin }) {
            />
            <label for="username">Phone number, username, or email</label>
          </div>
-         <div class="field">
+         <div className="field">
             <input 
                 id="password" 
                 type="password" 
@@ -54,8 +54,8 @@ function LoginForm({ onLogin }) {
             />
            <label for="password">Password</label>
          </div>
-           <button class="login-button" title="login" variant="fill" color="primary" type="submit">Log In</button>
-           <div class="separator">
+           <button className="login-button" title="login" variant="fill" color="primary" type="submit">Log In</button>
+           <div className="separator">
              
         
              
