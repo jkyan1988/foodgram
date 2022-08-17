@@ -14,6 +14,7 @@ function App() {
   const [ comment, setComment ] = useState([])
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
+  const [isOn, setIsOn] = useState(false);
 
  
   useEffect(() => {
@@ -61,6 +62,24 @@ function App() {
       }
     });
   }
+
+  function handleLikes(e){
+    e.preventDefault();
+        fetch("/likes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+            body: JSON.stringify({
+            id: likes.id,
+            user_id: likes.user_id,
+            post_id: likes.post_id,
+          }),
+        })
+            .then((response) => response.json())
+            .then((newLike) => setComment([newLike, ...likes]))
+            setIsOn((isOn) => !isOn)
+        };
   // map the list of users then filter them by post.user_id
   // const findUser = user.find(user => user.username === post.user_id)
   // const mapUsers = findUser.map((user) => user.username)
@@ -93,6 +112,7 @@ function App() {
           posts={post} 
           comments={comment}
           setComment={setComment}
+          setPost={setPost}
         />
         <div>
           <Switch>
@@ -108,6 +128,7 @@ function App() {
                  posts={post} 
                  comments={comment}
                  setComment={setComment}
+                 setPost={setPost}
               />
             </Route>
             <Route path="/postcard">
@@ -117,6 +138,9 @@ function App() {
                 likes={likes}
                 setLikes={setLikes}
                 setPost={setPost}
+                handleLikes={handleLikes}
+                isOn={isOn}
+                setIsOn={setIsOn}
               />
 
             </Route>

@@ -2,17 +2,18 @@ import React from 'react';
 import PostCard from './PostCard';
 import '../styles/postcontainer.scss';
 
-function PostContainer( { posts, comments, setComment  } ){
+function PostContainer( { posts, comments, setComment, setPost  } ){
     
     return(
         <div >
-            {posts.map((post) => { 
+            {posts &&  posts.map((post) => { 
                 return (
                 <PostCard 
                     key={post.id} 
                     selectedPost={post} 
                     comments={comments} 
                     setComment={setComment}
+                    setPost={setPost}
                 /> 
                 )})} 
         </div>

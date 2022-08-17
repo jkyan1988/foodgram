@@ -5,11 +5,17 @@ import { TbPencil } from 'react-icons/tb';
 import React, { useState, useEffect } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Likes from './Likes';
+import EditPost from './EditPost';
 
 function PostCard( { selectedPost, 
                     comments, 
                     posts, 
-                    setComment
+                    setComment,
+                    setPost,
+                    handleLikes,
+                    isOn,
+                    setIsOn,
+
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -17,6 +23,7 @@ function PostCard( { selectedPost,
     const [ isEditing, setIsEditing ] = useState(false)
     const [ isEditingComment, setIsEditingComment ] = useState(false)
     const [ newComment, setNewComment ] = useState("")
+
     
 
     function handleCommentSubmit(e) {
@@ -68,7 +75,7 @@ function PostCard( { selectedPost,
               description: editDescription,
             }),
         }).then((r) => r.json())
-          .then((updatedPost) => setCurrentPost([updatedPost, ...posts]));
+          .then((updatedPost) => setCurrentPost(updatedPost));
           setIsEditing(false)
           e.target.reset()
           window.location.reload(false);
@@ -83,19 +90,20 @@ function PostCard( { selectedPost,
             <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>
             <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>
             </header>
-            <div style={isEditing === false ? {display: "none"} : {display: ""}}>
-                <h3>Edit Post</h3>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Post URL" onChange={(e) => setEditPost(e.target.value)}/>
-                    <input type="text" placeholder="Caption" onChange={(e) => setEditDescription(e.target.value)}/>
-                    <button>Submit</button>
-                    <button onClick={(e) => {
-                      e.stopPropagation()
-                      setIsEditing(false)}}>Cancel</button>
-                </form>
-            </div>
+            <EditPost 
+                      isEditing={isEditing}
+                      handleSubmit={handleSubmit}
+                      setEditPost={setEditPost}
+                      setEditDescription={setEditDescription}
+                      setIsEditing={setIsEditing}
+            
+            />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-            <Likes />
+            <Likes 
+                  handleLikes={handleLikes}
+                  isOn={isOn}
+                  setIsOn={setIsOn}
+            />
             <div>{selectedPost.description}</div>
             
             <div>
