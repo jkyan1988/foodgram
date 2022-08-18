@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Navigation from './Navigation';
 import Login from "../pages/Login";
@@ -15,7 +15,7 @@ function App() {
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
   const [isOn, setIsOn] = useState(false);
-
+  const { id } = useParams();
  
   useEffect(() => {
     fetch('/comments')
@@ -41,7 +41,7 @@ function App() {
         .then((likes) => setLikes(likes))
   }, []);
 
-
+  console.log(likes)
 
   useEffect(() => {
     // auto-login
@@ -71,15 +71,33 @@ function App() {
             "Content-Type": "application/json",
           },
             body: JSON.stringify({
+            like: true,
             id: likes.id,
-            user_id: likes.user_id,
-            post_id: likes.post_id,
+            user_id: post.user_id,
+            post_id: post.post_id,
           }),
         })
             .then((response) => response.json())
-            .then((newLike) => setComment([newLike, ...likes]))
+            .then((newLike) => setLikes([newLike, ...likes]))
             setIsOn((isOn) => !isOn)
         };
+
+    function handleDeleteLikes(e) {
+      e.preventDefault();
+        fetch(`/likes/${id}`,{
+          method: 'DELETE',
+        }).then(() => {
+          fetch(`/likes/${id}`)
+          .then((res) => res.json())
+          .then(setLikes)
+        })
+        }
+    
+    function findUserName(user){ 
+      if (user.id === post.user_id){
+        return user.username
+      }
+    }
   // map the list of users then filter them by post.user_id
   // const findUser = user.find(user => user.username === post.user_id)
   // const mapUsers = findUser.map((user) => user.username)
@@ -113,6 +131,8 @@ function App() {
           comments={comment}
           setComment={setComment}
           setPost={setPost}
+          handleDeleteLikes={handleDeleteLikes}
+          findUserName={findUserName}
         />
         <div>
           <Switch>
@@ -129,18 +149,23 @@ function App() {
                  comments={comment}
                  setComment={setComment}
                  setPost={setPost}
+                 handleDeleteLikes={handleDeleteLikes}
+                 findUserName={findUserName}
               />
             </Route>
-            <Route path="/postcard">
+            <Route path="/post/:id">
               <PostCard 
                 posts={post}
                 setComment={setComment}
                 likes={likes}
                 setLikes={setLikes}
                 setPost={setPost}
+                user={user}
                 handleLikes={handleLikes}
-                isOn={isOn}
                 setIsOn={setIsOn}
+                isOn={isOn}
+                handleDeleteLikes={handleDeleteLikes}
+                findUserName={findUserName}
               />
 
             </Route>

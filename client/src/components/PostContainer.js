@@ -2,7 +2,8 @@ import React from 'react';
 import PostCard from './PostCard';
 import '../styles/postcontainer.scss';
 
-function PostContainer( { posts, comments, setComment, setPost  } ){
+
+function PostContainer( { posts, comments, setComment, setPost, handleDeleteLikes, findUserName  } ){
     
     return(
         <div >
@@ -14,8 +15,11 @@ function PostContainer( { posts, comments, setComment, setPost  } ){
                     comments={comments} 
                     setComment={setComment}
                     setPost={setPost}
+                    handleDeleteLikes={handleDeleteLikes}
+                    findUserName={findUserName}
                 /> 
                 )})} 
+                
         </div>
     )
 }

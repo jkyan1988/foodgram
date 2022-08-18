@@ -59,8 +59,36 @@ puts "Seeding comments..."
 end
 
 puts "Seeding likes..."
-30.times do 
-    Like.create!(user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
-end
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: true, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+Like.create!(like: false, user_id: User.all.ids.sample, post_id: Post.all.ids.sample)
+
 
 puts "Seeding completed successfully"

@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Likes from './Likes';
 import EditPost from './EditPost';
+import { ClapButton } from '@lyket/react';
 
 function PostCard( { selectedPost, 
                     comments, 
@@ -13,8 +14,13 @@ function PostCard( { selectedPost,
                     setComment,
                     setPost,
                     handleLikes,
+                    user,
+                    likes,
+                    setLikes,
                     isOn,
                     setIsOn,
+                    handleDeleteLikes,
+                    findUserName
 
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
@@ -23,7 +29,7 @@ function PostCard( { selectedPost,
     const [ isEditing, setIsEditing ] = useState(false)
     const [ isEditingComment, setIsEditingComment ] = useState(false)
     const [ newComment, setNewComment ] = useState("")
-
+   
     
 
     function handleCommentSubmit(e) {
@@ -80,13 +86,15 @@ function PostCard( { selectedPost,
           e.target.reset()
           window.location.reload(false);
         }
+
+       
        
 
 
     return(
     <div className="cards">
         <div className="card">
-            <header>{selectedPost.user_id}
+            <header>{findUserName}
             <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>
             <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>
             </header>
@@ -100,10 +108,13 @@ function PostCard( { selectedPost,
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
             <Likes 
+                  likes={likes} 
+                  isOn={isOn} 
+                  setIsOn={setIsOn} 
                   handleLikes={handleLikes}
-                  isOn={isOn}
-                  setIsOn={setIsOn}
+                  handleDeleteLikes={handleDeleteLikes}
             />
+           <ClapButton id="diy-fish-holder" namespace="post" />
             <div>{selectedPost.description}</div>
             
             <div>

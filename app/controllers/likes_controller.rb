@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     end
 
     def show
-        render json: @like, serializer: LikesSerializer
+        render json: @like, serializer: PostWithLikesSerializer
     end
 
     def create
@@ -23,7 +23,7 @@ class LikesController < ApplicationController
     private
 
     def like_params
-        params.permit(:id, :user_id, :post_id)
+        params.permit(:user_id, :post_id, :like, :id)
     end
 
     def find_like
