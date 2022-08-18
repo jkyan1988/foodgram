@@ -28,8 +28,8 @@ function PostForm( { post, setPost } ){
           e.target.reset()
       }
     return(
-        <div>
-            <h3>New Post</h3>
+        <div className="cards">
+            <h3 className="cards">Create A Post</h3>
             <form onSubmit={handlePostSubmit}>
                 <input onChange={(e) => setPostURL(e.target.value)} />
                 <input onChange={(e) => setDescription(e.target.value)} />

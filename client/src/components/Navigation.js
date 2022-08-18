@@ -8,21 +8,16 @@ function Navigation( { user, handleLogoutClick } ) {
     return(
         
         <div className="navigation">
-                    <span> 
-                    <NavLink exact to="/profile">
-                        <p>Welcome {user && user.username}!</p>
-                    </NavLink>
-                    <NavLink exact to="/">
-                        <button onClick={handleLogoutClick}>Log Out</button>
-                    </NavLink>
+               
                     
-                    </span>
+                <NavLink exact to="/">
+                <h1>FOODGRAM</h1>
+                </NavLink>
+                    
+                   
                     
             <div className="container">
-                <NavLink exact to="/">
-                <img className="logo" src={logo} alt="instagram logo" />
-                </NavLink>
-                <Menu user={user}/>
+                <Menu user={user} handleLogoutClick={handleLogoutClick}/>
             </div>
             
         </div>

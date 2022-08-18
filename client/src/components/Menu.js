@@ -5,18 +5,21 @@ import { ReactComponent as Notifications } from '../images/notifications.svg';
 import image from "../images/profile.jpg";
 import ProfileIcon from './ProfileIcon';
 import {NavLink} from 'react-router-dom'
+import { GrLogout } from 'react-icons/gr';
 
-function Menu( { user }) {
+function Menu( { user, handleLogoutClick }) {
     return(
         <div className="menu">
             <NavLink exact to="/">
             <Home className="icon" />
             </NavLink>
-            <Explore className="icon" />
-            <Notifications className="icon" />
+            
+            
             <NavLink exact to="/profile">
             <ProfileIcon user={user} iconSize="small" image={image}/>
             </NavLink>
+            <GrLogout onClick={handleLogoutClick} style={{ marginLeft: "15px"}} className="icon"></GrLogout>
+
         </div>
     )
 }

@@ -7,20 +7,20 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import Likes from './Likes';
 import EditPost from './EditPost';
 import { ClapButton } from '@lyket/react';
+import { BsHeartFill } from "react-icons/bs";
+import { BsHeart } from "react-icons/bs";
 
 function PostCard( { selectedPost, 
                     comments, 
                     posts, 
                     setComment,
                     setPost,
-                    handleLikes,
                     user,
                     likes,
                     setLikes,
-                    isOn,
-                    setIsOn,
                     handleDeleteLikes,
-                    findUserName
+                    findUserName,
+                    findUser,
 
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
@@ -29,7 +29,7 @@ function PostCard( { selectedPost,
     const [ isEditing, setIsEditing ] = useState(false)
     const [ isEditingComment, setIsEditingComment ] = useState(false)
     const [ newComment, setNewComment ] = useState("")
-   
+    const [isOn, setIsOn] = useState(false);
     
 
     function handleCommentSubmit(e) {
@@ -49,10 +49,6 @@ function PostCard( { selectedPost,
             setIsEditingComment(false)
             e.target.reset()
         };
-
-    
-      
-    
     
 
     function handleDelete(id){
@@ -87,10 +83,46 @@ function PostCard( { selectedPost,
           window.location.reload(false);
         }
 
-       
-       
+        function handleLikes(e){
+          e.preventDefault();
+              fetch("/likes", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                  body: JSON.stringify({
+                  like: "true",
+                  
+                  user_id: selectedPost.user_id,
+                  post_id: selectedPost.id,
+                }),
+              })
+                  .then((response) => response.json())
+                  .then((newLike) => setLikes([newLike, ...likes]))
+                 
+              };
 
-
+          function handleUnlikes(e){
+                e.preventDefault();
+                    fetch("/likes", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                        body: JSON.stringify({
+                        like: "false",
+                        
+                        user_id: selectedPost.user_id,
+                        post_id: selectedPost.id,
+                      }),
+                    })
+                        .then((response) => response.json())
+                        .then((newLike) => setLikes([newLike, ...likes]))
+                       
+                    };
+       
+             
+         console.log(findUser)
     return(
     <div className="cards">
         <div className="card">
@@ -107,19 +139,29 @@ function PostCard( { selectedPost,
             
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-            <Likes 
+            <BsHeart  onClick={handleUnlikes}/> <BsHeartFill onClick={handleLikes}/>
+            {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
+            return ( <Likes 
+                  key={like.id}
                   likes={likes} 
                   isOn={isOn} 
+                  like={like}
                   setIsOn={setIsOn} 
                   handleLikes={handleLikes}
                   handleDeleteLikes={handleDeleteLikes}
+                  handleUnlikes={handleUnlikes}
+                  user={user}
             />
-           <ClapButton id="diy-fish-holder" namespace="post" />
+            )})}
+           {/* <ClapButton id="diy-fish-holder" namespace="post" /> */}
             <div>{selectedPost.description}</div>
             
-            <div>
-                <br></br>
-            <b>Comments</b> <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
+            <div className="comments">
+                <br></br><b>Comments</b> 
+            {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
+                    return (<Comment key={comment.id} comment={comment} setComment={setComment} />)
+                   })} 
+            <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
             <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>
                 
                 <form onSubmit={handleCommentSubmit}>
@@ -130,9 +172,6 @@ function PostCard( { selectedPost,
                       e.stopPropagation()
                       setIsEditingComment(false)}}>Cancel</button>
             </div>
-            {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
-                    return (<Comment key={comment.id} comment={comment} setComment={setComment} />)
-                   })} 
             </div> 
         </div>
     </div>

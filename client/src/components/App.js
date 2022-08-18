@@ -14,8 +14,8 @@ function App() {
   const [ comment, setComment ] = useState([])
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
-  const [isOn, setIsOn] = useState(false);
-  const { id } = useParams();
+
+  // const { id } = useParams();
  
   useEffect(() => {
     fetch('/comments')
@@ -41,7 +41,7 @@ function App() {
         .then((likes) => setLikes(likes))
   }, []);
 
-  console.log(likes)
+ 
 
   useEffect(() => {
     // auto-login
@@ -63,46 +63,37 @@ function App() {
     });
   }
 
-  function handleLikes(e){
-    e.preventDefault();
-        fetch("/likes", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-            body: JSON.stringify({
-            like: true,
-            id: likes.id,
-            user_id: post.user_id,
-            post_id: post.post_id,
-          }),
-        })
-            .then((response) => response.json())
-            .then((newLike) => setLikes([newLike, ...likes]))
-            setIsOn((isOn) => !isOn)
-        };
+  // function handleLikes(e){
+  //   e.preventDefault();
+  //       fetch("/likes", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //           body: JSON.stringify({
+  //           like: true,
+  //           id: likes.id,
+  //           user_id: post.user_id,
+  //           post_id: post.post_id,
+  //         }),
+  //       })
+  //           .then((response) => response.json())
+  //           .then((newLike) => setLikes([newLike, ...likes]))
+  //           setIsOn((isOn) => !isOn)
+  //       };
 
-    function handleDeleteLikes(e) {
-      e.preventDefault();
-        fetch(`/likes/${id}`,{
-          method: 'DELETE',
-        }).then(() => {
-          fetch(`/likes/${id}`)
-          .then((res) => res.json())
-          .then(setLikes)
-        })
-        }
     
-    function findUserName(user){ 
-      if (user.id === post.user_id){
-        return user.username
-      }
-    }
+    
+    // function findUserName(user){ 
+    //   if (user.id === post.user_id){
+    //     return user.username
+    //   }
+    // }
   // map the list of users then filter them by post.user_id
   // const findUser = user.find(user => user.username === post.user_id)
   // const mapUsers = findUser.map((user) => user.username)
   // const filterMapUsers = mapUsers.filter((post) => post.user_id=== user.id )
- 
+    console.log(user.username)
   return (
     <div>
     <div>
@@ -112,16 +103,12 @@ function App() {
           user={user} 
           handleLogoutClick={handleLogoutClick} 
         />
-        </Route>
-      </Switch>
-        
-    </div>
-        <Switch>
+       
         
         <Route path="/profile">
               <UserProfile user={user} posts={post}/>
             </Route>
-        </Switch>
+        
         <PostForm
           post={post} 
           setPost={setPost}
@@ -131,9 +118,15 @@ function App() {
           comments={comment}
           setComment={setComment}
           setPost={setPost}
-          handleDeleteLikes={handleDeleteLikes}
-          findUserName={findUserName}
+          likes={likes}
+          setLikes={setLikes}
+          findUser={findUser}
+
         />
+        </Route>
+      </Switch>
+        
+    </div>
         <div>
           <Switch>
             
@@ -149,8 +142,10 @@ function App() {
                  comments={comment}
                  setComment={setComment}
                  setPost={setPost}
-                 handleDeleteLikes={handleDeleteLikes}
-                 findUserName={findUserName}
+                 likes={likes}
+                 setLikes={setLikes}
+                 findUser={findUser}
+
               />
             </Route>
             <Route path="/post/:id">
@@ -161,11 +156,9 @@ function App() {
                 setLikes={setLikes}
                 setPost={setPost}
                 user={user}
-                handleLikes={handleLikes}
-                setIsOn={setIsOn}
-                isOn={isOn}
-                handleDeleteLikes={handleDeleteLikes}
-                findUserName={findUserName}
+                findUser={findUser}
+              
+             
               />
 
             </Route>

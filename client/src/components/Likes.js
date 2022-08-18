@@ -4,29 +4,36 @@ import React, { useState } from "react";
 import { ClapButton } from '@lyket/react';
 
 
-function Likes( {  likes, handleLikes, isOn, setIsOn, handleDeleteLikes }) {
+function Likes( { handleUnlikes, likes, handleLikes, isOn, setIsOn, handleDeleteLikes, like, user }) {
     // const [isOn, setIsOn] = useState(false);
-    const [likePost, setLikePost] = useState(<BsHeartFill style={{ width: "23px", height: "23px"}} />);
-    const [unlikePost, setUnlikePost] = useState(<BsHeart style={{ width: "23px", height: "23px"}}/>);
-
+    // const [likePost, setLikePost] = useState(<BsHeartFill  onClick={handleDeleteLikes} style={{ width: "23px", height: "23px"}} />);
+    // const [unlikePost, setUnlikePost] = useState(<BsHeart onClick={handleLikes} style={{ width: "23px", height: "23px"}}/>);
+    // const [ isLiked, setIsLiked ] = useState("")
     // function handleClick() {
-    //     setIsOn((isOn) => !isOn);
+    //     setIsOn(isOn => !(isOn));
     //   }
-    function handleClick(e){
-        if (isOn && likePost){
-            handleLikes(e)
-        }
-        else {
-            handleDeleteLikes(e)
-        }
-    }
+    // function handleClick(e){
+    //     if (isOn && likePost){
+    //         handleLikes(e)
+    //     }
+    //     else {
+    //         handleDeleteLikes(e)
+    //     }
+    // }
+    // function handleLikeChange(like){
+    //    if (like.like.includes("true")) {
+    //     return <BsHeartFill />
+    //    } else (
+    //     null
+    //     )   
+    //    }
+        // {like.like.includes("true") ? <BsHeartFill /> : null}
+    
     
     return (
         <div>
-            
-            <button style={{ background: "white", border: "0px" }} onClick={handleClick} >
-                {isOn ? likePost : unlikePost }
-            </button>
+            {/* <ClapButton /> */}
+            Likes:  likes this  {like.like.includes("true") ? <BsHeartFill /> : <BsHeart />}
         </div>
     )
 }

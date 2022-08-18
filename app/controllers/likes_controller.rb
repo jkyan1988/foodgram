@@ -6,16 +6,17 @@ class LikesController < ApplicationController
     end
 
     def show
-        render json: @like, serializer: PostWithLikesSerializer
+        render json: @like, serializer: LikesSerializer
     end
 
     def create
-        
+        # binding.pry
         like = @current_user.likes.create!(like_params)
         render json: like, status: :created
     end
 
     def destroy
+        binding.pry
         @current_user.likes.destroy(find_like)
         head :no_content
     end
@@ -23,7 +24,7 @@ class LikesController < ApplicationController
     private
 
     def like_params
-        params.permit(:user_id, :post_id, :like, :id)
+        params.permit(:post_id, :id, :user_id, :like)
     end
 
     def find_like
