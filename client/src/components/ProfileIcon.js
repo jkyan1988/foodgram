@@ -1,5 +1,4 @@
 import "../styles/profileIcon.scss";
-import UserProfile from "./UserProfile";
 
 function ProfileIcon(props) {
     const { iconSize, storyBorder, image, user } = props;
@@ -12,9 +11,6 @@ function ProfileIcon(props) {
 
     let randomId = getRandomInt(1, 70);
 
-    let profileImage = image ? image : `https://i.pravatar.cc/150?img=${randomId}`;
-
-
     return (
         <div className={storyBorder ? "storyBorder" : ""}>
             <img 
@@ -24,7 +20,6 @@ function ProfileIcon(props) {
             />
         </div>
     )
-
 }
 
 export default ProfileIcon;

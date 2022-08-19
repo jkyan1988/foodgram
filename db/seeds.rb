@@ -13,9 +13,19 @@ Like.destroy_all
 
 puts "Seeding users..."
 
-10.times do 
-    User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://i.pravatar.cc/150?img=100", bio: Faker::Restaurant.description)
-end
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654417958787-5d9948c3c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1651474799880-10329ed16946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654922704274-cd34f165c5e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654923064643-4029284b40bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654912912529-2b7aadef2475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1655117070431-0ca113ca5106?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=702&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1655069774988-7d509795c6d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1655115287925-e03a3f863e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654912912506-f3685d8df808?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1613045992384-23bdc3b2c613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", bio: Faker::Restaurant.description)
+User.create!(username: Faker::Name.first_name, password: "123", profile_pic: "https://images.unsplash.com/photo-1654023451875-223085c35eb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80", bio: Faker::Restaurant.description)
+User.create!(username: "james", password: "123", profile_pic: "https://images.unsplash.com/photo-1654194952486-7d420417fc80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", bio: "I love food and whiskey")
+
 
 puts "Seeding posts..."
 

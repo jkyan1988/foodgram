@@ -2,7 +2,6 @@ import React from 'react';
 import PostCard from './PostCard';
 import '../styles/postcontainer.scss';
 
-
 function PostContainer( {   posts, 
                             comments, 
                             setComment, 

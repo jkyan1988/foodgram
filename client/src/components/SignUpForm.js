@@ -36,7 +36,7 @@ function SignUpForm({ onLogin }) {
     });
   }
 
-  return (
+return (
     <>
 <div class="container">
 <div class="box">
@@ -93,19 +93,9 @@ function SignUpForm({ onLogin }) {
       <label for="password">Set Bio</label>
     </div>
       <button class="login-button" title="login" variant="fill" color="primary" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-      <div class="separator">
-        
-   
-        
-      </div>
-    
   </form>
 </div>
-{/* <div class="box">
-  <p>Don't have an account? <a class="signup" href="#">Sign Up</a></p>
-</div> */}
 </div>
-
 </>
   );
 }

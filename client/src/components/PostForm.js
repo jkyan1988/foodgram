@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 
-
 function PostForm( { post, setPost } ){
     const [ postURL, setPostURL ] = useState("");
     const [ description, setDescription ] = useState("");
 
-  
-    // console.log(post)
-
+    // SUBMIT POST
     function handlePostSubmit(e) {
         e.preventDefault();
-        
         fetch("/posts", {
           method: "POST",
           headers: {

@@ -1,4 +1,4 @@
-import { Switch, Route, useParams } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Navigation from './Navigation';
 import Login from "../pages/Login";
@@ -15,34 +15,31 @@ function App() {
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
 
-  // const { id } = useParams();
- 
+ // all comments
   useEffect(() => {
     fetch('/comments')
         .then((resp) => resp.json())
         .then((comments) => setComment(comments))
   }, []);
-
+// all users
   useEffect(() => {
     fetch('/users')
         .then((resp) => resp.json())
         .then((users) => setFindUser(users))
   }, []);
-
+// all posts
   useEffect(() => {
     fetch("/posts")
         .then((resp) => resp.json())
         .then((posts) => setPost(posts))
   }, []);
-
+// all likes
   useEffect(() => {
     fetch("/likes")
         .then((resp) => resp.json())
         .then((likes) => setLikes(likes))
   }, []);
-
- 
-
+// self login user
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -54,7 +51,7 @@ function App() {
 
   if (!user) return <Login onLogin={setUser} /> ;
 
-
+// logout button
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -63,57 +60,24 @@ function App() {
     });
   }
 
-  // function handleLikes(e){
-  //   e.preventDefault();
-  //       fetch("/likes", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //           body: JSON.stringify({
-  //           like: true,
-  //           id: likes.id,
-  //           user_id: post.user_id,
-  //           post_id: post.post_id,
-  //         }),
-  //       })
-  //           .then((response) => response.json())
-  //           .then((newLike) => setLikes([newLike, ...likes]))
-  //           setIsOn((isOn) => !isOn)
-  //       };
-
-    
-    
-    // function findUserName(user){ 
-    //   if (user.id === post.user_id){
-    //     return user.username
-    //   }
-    // }
-  // map the list of users then filter them by post.user_id
-  // const findUser = user.find(user => user.username === post.user_id)
-  // const mapUsers = findUser.map((user) => user.username)
-  // const filterMapUsers = mapUsers.filter((post) => post.user_id=== user.id )
-    console.log(user.username)
   return (
     <div>
     <div>
-      <Switch>
-        <Route path="/">
-        <Navigation 
+          <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
-        />
-       
-        
+          />
+      <Switch>
+        <Route path="/">
         <Route path="/profile">
-              <UserProfile user={user} posts={post}/>
-            </Route>
-        
-        <PostForm
+          <UserProfile user={user} posts={post}/>
+        </Route>
+          <Route path="/">
+          <PostForm
           post={post} 
           setPost={setPost}
-        />
-        <PostContainer 
+          />
+          <PostContainer 
           posts={post} 
           comments={comment}
           setComment={setComment}
@@ -121,33 +85,14 @@ function App() {
           likes={likes}
           setLikes={setLikes}
           findUser={findUser}
-
-        />
+          />
+          </Route>
         </Route>
       </Switch>
-        
     </div>
         <div>
           <Switch>
             
-            <Route path="/postform">
-              <PostForm 
-                post={post} 
-                setPost={setPost}
-              />
-            </Route>
-            <Route path="/postcontainer">
-              <PostContainer 
-                 posts={post} 
-                 comments={comment}
-                 setComment={setComment}
-                 setPost={setPost}
-                 likes={likes}
-                 setLikes={setLikes}
-                 findUser={findUser}
-
-              />
-            </Route>
             <Route path="/post/:id">
               <PostCard 
                 posts={post}
@@ -157,16 +102,12 @@ function App() {
                 setPost={setPost}
                 user={user}
                 findUser={findUser}
-              
-             
               />
-
             </Route>
-            
-
-
+            <Route path="/login">
+          <Login onLogin={setUser}/>
+          </Route>
           </Switch>
-
         </div>
     </div>
   );

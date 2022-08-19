@@ -8,6 +8,7 @@ function Comment( { comment, setComment } ){
     const [isEditing, setIsEditing] = useState(false)
     const [ editComment, setEditComment ] = useState("")
 
+    // EDIT COMMENT
     function handleSubmit(e) {
         e.preventDefault()
         fetch(`/comments/${comment.id}`, {
@@ -27,6 +28,7 @@ function Comment( { comment, setComment } ){
           window.location.reload(false);
         }
 
+        // DELETE COMMENT
         function handleDelete(id){
           fetch(`/comments/${id}`,{
               method: "DELETE",

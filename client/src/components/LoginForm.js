@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import {useHistory} from 'react-router-dom'
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const history = useHistory()
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,11 +35,11 @@ function LoginForm({ onLogin }) {
            <input
              id="username"
              type="name"
-             placeholder="Phone number, username, or email"
+             placeholder="Username"
              value={username}
              onChange={(e) => setUsername(e.target.value)}
            />
-           <label for="username">Phone number, username, or email</label>
+           <label for="username">Username</label>
          </div>
          <div className="field">
             <input 
@@ -55,17 +53,9 @@ function LoginForm({ onLogin }) {
            <label for="password">Password</label>
          </div>
            <button className="login-button" title="login" variant="fill" color="primary" type="submit">Log In</button>
-           <div className="separator">
-             
-        
-             
-           </div>
-         
+           
        </form>
      </div>
-     {/* <div class="box">
-       <p>Don't have an account? <a class="signup" href="#">Sign Up</a></p>
-     </div> */}
    </div>
    
   );

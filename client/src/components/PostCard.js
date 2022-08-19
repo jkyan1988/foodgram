@@ -1,27 +1,19 @@
 import '../styles/postcard.scss';
 import Comment from './Comment';
-import PostMenu from './PostMenu'
 import { TbPencil } from 'react-icons/tb';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Likes from './Likes';
 import EditPost from './EditPost';
-import { ClapButton } from '@lyket/react';
 import { BsHeartFill } from "react-icons/bs";
-import { BsHeart } from "react-icons/bs";
+import { FaHeartBroken } from 'react-icons/fa'
 
 function PostCard( { selectedPost, 
                     comments, 
-                    posts, 
                     setComment,
-                    setPost,
-                    user,
                     likes,
                     setLikes,
-                    handleDeleteLikes,
-                    findUserName,
-                    findUser,
-
+                    findUserName
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -29,9 +21,9 @@ function PostCard( { selectedPost,
     const [ isEditing, setIsEditing ] = useState(false)
     const [ isEditingComment, setIsEditingComment ] = useState(false)
     const [ newComment, setNewComment ] = useState("")
-    const [isOn, setIsOn] = useState(false);
-    
 
+    
+// Submit Comment
     function handleCommentSubmit(e) {
         e.preventDefault();
         fetch("/comments", {
@@ -50,7 +42,7 @@ function PostCard( { selectedPost,
             e.target.reset()
         };
     
-
+// Delete POSTS
     function handleDelete(id){
         fetch(`/posts/${id}`,{
             method: "DELETE",
@@ -63,7 +55,7 @@ function PostCard( { selectedPost,
         }
 
      
-
+// EDIT POSTS
       function handleSubmit(e) {
         e.preventDefault()
         fetch(`/posts/${selectedPost.id}`, {
@@ -82,7 +74,7 @@ function PostCard( { selectedPost,
           e.target.reset()
           window.location.reload(false);
         }
-
+// ADD TRUE TO LIKE VALUE
         function handleLikes(e){
           e.preventDefault();
               fetch("/likes", {
@@ -101,7 +93,7 @@ function PostCard( { selectedPost,
                   .then((newLike) => setLikes([newLike, ...likes]))
                  
               };
-
+// ADD FALSE TO LIKE VALUE
           function handleUnlikes(e){
                 e.preventDefault();
                     fetch("/likes", {
@@ -118,12 +110,9 @@ function PostCard( { selectedPost,
                     })
                         .then((response) => response.json())
                         .then((newLike) => setLikes([newLike, ...likes]))
-                       
-                    };
+           };
        
-             
-         console.log(findUser)
-    return(
+  return(
     <div className="cards">
         <div className="card">
             <header>{findUserName}
@@ -136,26 +125,14 @@ function PostCard( { selectedPost,
                       setEditPost={setEditPost}
                       setEditDescription={setEditDescription}
                       setIsEditing={setIsEditing}
-            
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-            <BsHeart  onClick={handleUnlikes}/> <BsHeartFill onClick={handleLikes}/>
+           Press to like post:  <BsHeartFill onClick={handleLikes}/> <FaHeartBroken  onClick={handleUnlikes}/> 
+            <br></br>Likes:
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
-            return ( <Likes 
-                  key={like.id}
-                  likes={likes} 
-                  isOn={isOn} 
-                  like={like}
-                  setIsOn={setIsOn} 
-                  handleLikes={handleLikes}
-                  handleDeleteLikes={handleDeleteLikes}
-                  handleUnlikes={handleUnlikes}
-                  user={user}
-            />
+            return ( <Likes key={like.id} like={like}/>
             )})}
-           {/* <ClapButton id="diy-fish-holder" namespace="post" /> */}
             <div>{selectedPost.description}</div>
-            
             <div className="comments">
                 <br></br><b>Comments</b> 
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
@@ -163,7 +140,6 @@ function PostCard( { selectedPost,
                    })} 
             <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
             <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>
-                
                 <form onSubmit={handleCommentSubmit}>
                     <input onChange={(e) => setNewComment(e.target.value)} type="text"/>
                     <button onClick={(e) => {e.stopPropagation()}}>Submit</button>
