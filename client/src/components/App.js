@@ -93,7 +93,7 @@ function App() {
         <div>
           <Switch>
             
-            <Route path="/post/:id">
+            <Route path="/postcard">
               <PostCard 
                 posts={post}
                 setComment={setComment}

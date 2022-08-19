@@ -5,8 +5,7 @@ import '../styles/postcontainer.scss';
 function PostContainer( {   posts, 
                             comments, 
                             setComment, 
-                            setPost, 
-                            handleDeleteLikes, 
+                            setPost,  
                             findUserName, 
                             likes,
                             setLikes
@@ -25,7 +24,6 @@ function PostContainer( {   posts,
                     comments={comments} 
                     setComment={setComment}
                     setPost={setPost}
-                    handleDeleteLikes={handleDeleteLikes}
                     findUserName={findUserName}
                     likes={likes}
                     setLikes={setLikes}

@@ -127,7 +127,7 @@ function PostCard( { selectedPost,
                       setIsEditing={setIsEditing}
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-           Press to like post:  <BsHeartFill onClick={handleLikes}/> <FaHeartBroken  onClick={handleUnlikes}/> 
+           Press to like post:  <BsHeartFill onClick={handleLikes}/> Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
             <br></br>Likes:
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
             return ( <Likes key={like.id} like={like}/>

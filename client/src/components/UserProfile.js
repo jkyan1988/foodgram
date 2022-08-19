@@ -1,4 +1,5 @@
 import '../styles/userprofile.scss';
+import { NavLink } from 'react-router-dom';
 
 function UserProfile( { user, posts }){
     return (
@@ -20,21 +21,20 @@ function UserProfile( { user, posts }){
                 <div>
                     <h4>{user.username}</h4>
                     <div style={{display: "flex", justifyContent: "space-between", width:"108%"}}>
-                        <h6>40 posts</h6>
-                        <h6>40 followers</h6>
-                        <h6>40 following</h6>
+                        
                     </div>
                     <div>
-                        {user.bio}
+                       About me: {user.bio}
                     </div>
                 </div>
             </div>
             <div className="gallery">
                 {posts.map((post) => {
+                    if (post.user_id === user.id) {
                     return (
-                        <img className="item" alt="" src={post.post}/>    
+                        <img className="item" alt="" src={post.post}/>   
                     )
-                })}
+                }})}
 
                   
             </div>
