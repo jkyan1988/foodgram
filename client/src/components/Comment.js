@@ -3,7 +3,7 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import React, { useState } from 'react';
 import EditComment from './EditComment';
 
-function Comment( { comment, setComment } ){
+function Comment( { comment, setComment, onUpdateComment, onDeleteComment } ){
 
     const [isEditing, setIsEditing] = useState(false)
     const [ editComment, setEditComment ] = useState("")
@@ -22,22 +22,17 @@ function Comment( { comment, setComment } ){
             }),
           })
           .then((r) => r.json())
-          .then((updatedComment) => setComment(updatedComment));
+          .then((updatedComment) => onUpdateComment(updatedComment));
           setIsEditing(false)
           e.target.reset()
-          window.location.reload(false);
         }
 
         // DELETE COMMENT
         function handleDelete(id){
           fetch(`/comments/${id}`,{
               method: "DELETE",
-          }).then(() => {
-              fetch(`/comments/${id}`)
-                .then((response) => response.json())
-                .then(setComment);
-            });
-            window.location.reload(false);
+          })
+          onDeleteComment(id)
           }
           
     return(

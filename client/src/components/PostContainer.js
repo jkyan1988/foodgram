@@ -8,7 +8,11 @@ function PostContainer( {   posts,
                             setPost,  
                             findUserName, 
                             likes,
-                            setLikes
+                            setLikes,
+                            onUpdatePost,
+                            onDeletePost,
+                            onUpdateComment,
+                            onDeleteComment
                         } 
                         )
                         {
@@ -27,6 +31,10 @@ function PostContainer( {   posts,
                     findUserName={findUserName}
                     likes={likes}
                     setLikes={setLikes}
+                    onUpdatePost={onUpdatePost}
+                    onDeletePost={onDeletePost}
+                    onUpdateComment={onUpdateComment}
+                    onDeleteComment={onDeleteComment}
                 /> 
                 )})} 
                 

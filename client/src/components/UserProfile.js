@@ -1,5 +1,4 @@
 import '../styles/userprofile.scss';
-import { NavLink } from 'react-router-dom';
 
 function UserProfile( { user, posts }){
     return (

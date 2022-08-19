@@ -60,19 +60,56 @@ function App() {
     });
   }
 
+  // return all posts once edited
+  function onUpdatePost(updatedPost){
+    const filteredPosts = post.map((post) => {
+      if (post.id === updatedPost.id) {
+        return updatedPost
+      } else {
+        return post
+      }  
+  })
+    setPost(filteredPosts)
+  }
+
+  // return all comments once edited
+  function onUpdateComment(updatedComment){
+    const filteredComments = comment.map((comment) => {
+      if (comment.id === updatedComment.id) {
+        return updatedComment
+      } else {
+        return comment
+    }
+  })
+    setComment(filteredComments)
+  }
+
+
+// return all posts that's not deleted
+  function onDeletePost(id){
+    const filteredPostsToo = post.filter((post) => post.id !== id)
+    setPost(filteredPostsToo)
+  }
+
+  // return all comments that's not deleted
+  function onDeleteComment(id){
+    const filteredCommentsToo = comment.filter((comment) => comment.id !== id)
+    setComment(filteredCommentsToo)
+  }
+
   return (
-    <div>
     <div>
           <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
           />
+    <div>
       <Switch>
-        <Route path="/">
+       
         <Route path="/profile">
           <UserProfile user={user} posts={post}/>
         </Route>
-          <Route path="/">
+        <Route path="/">
           <PostForm
           post={post} 
           setPost={setPost}
@@ -85,9 +122,13 @@ function App() {
           likes={likes}
           setLikes={setLikes}
           findUser={findUser}
+          onUpdatePost={onUpdatePost}
+          onDeletePost={onDeletePost}
+          onUpdateComment={onUpdateComment}
+          onDeleteComment={onDeleteComment}
           />
-          </Route>
         </Route>
+        
       </Switch>
     </div>
         <div>
@@ -102,6 +143,10 @@ function App() {
                 setPost={setPost}
                 user={user}
                 findUser={findUser}
+                onUpdatePost={onUpdatePost}
+                onDeletePost={onDeletePost}
+                onUpdateComment={onUpdateComment}
+                onDeleteComment={onDeleteComment}
               />
             </Route>
             <Route path="/login">

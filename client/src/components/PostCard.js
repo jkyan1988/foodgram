@@ -13,7 +13,11 @@ function PostCard( { selectedPost,
                     setComment,
                     likes,
                     setLikes,
-                    findUserName
+                    findUserName,
+                    onUpdatePost,
+                    onDeletePost,
+                    onUpdateComment,
+                    onDeleteComment
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -45,13 +49,9 @@ function PostCard( { selectedPost,
 // Delete POSTS
     function handleDelete(id){
         fetch(`/posts/${id}`,{
-            method: "DELETE",
-        }).then(() => {
-            fetch(`/posts/${id}`)
-              .then((response) => response.json())
-              .then(setCurrentPost);
-          });
-          window.location.reload(false);
+            method: "DELETE"
+        })
+       onDeletePost(id)
         }
 
      
@@ -69,10 +69,10 @@ function PostCard( { selectedPost,
               description: editDescription,
             }),
         }).then((r) => r.json())
-          .then((updatedPost) => setCurrentPost(updatedPost));
+          .then((updatedPost) => onUpdatePost(updatedPost));
           setIsEditing(false)
           e.target.reset()
-          window.location.reload(false);
+        
         }
 // ADD TRUE TO LIKE VALUE
         function handleLikes(e){
@@ -136,7 +136,7 @@ function PostCard( { selectedPost,
             <div className="comments">
                 <br></br><b>Comments</b> 
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
-                    return (<Comment key={comment.id} comment={comment} setComment={setComment} />)
+                    return (<Comment key={comment.id} comment={comment} setComment={setComment} onUpdateComment={onUpdateComment} onDeleteComment={onDeleteComment} />)
                    })} 
             <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
             <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>
