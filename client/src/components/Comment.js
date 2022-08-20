@@ -43,12 +43,11 @@ function Comment( { comment,
           })
           onDeleteComment(id)
           }
-          // console.log(currentUser.username)
+       
 
           const commentUser = findUser.filter((user) => user.id === comment.user_id).map((user) => user.username)
           const commentUserPic = findUser.filter((user) => user.id === comment.user_id).map((user) => user.profile_pic)
-          // const canEditComment = (commentUser === user.username) ? true : false
-// if (commentUser === user.username) return <TbPencil> 
+          
           const filterCurrentCommentUserId = findUser.filter((user) => user.id === comment.user_id).map((user) => user.id)
 
           let displayEdit 
@@ -63,15 +62,16 @@ function Comment( { comment,
             :
             displayDelete = null
 
+
     return(
-        <div>
+        <div className="commentContainer">
           
            
            <span> 
             <br></br>
             <img className="commentericon" src={commentUserPic} />
-            <h4>{commentUser}</h4>  
-            {comment.comment} 
+            <b className="accountName">{commentUser}</b>  
+            <span className="comment">{comment.comment} </span>
            
           
            

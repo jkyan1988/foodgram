@@ -116,12 +116,7 @@ function PostCard( { selectedPost,
                         .then((response) => response.json())
                         .then((newLike) => setLikes([newLike, ...likes]))
            };
-          //  function handleDeleteLikes(id){
-          //   fetch(`/likes/${id}`, {
-          //     method: 'DELETE',
-          //   })
-          //   setLikes(onUpdateLike)
-          // }
+       
           const filterCurrentPostUserId = findUser.filter((user) => user.id === selectedPost.user_id).map((user) => user.id)
 
 
@@ -136,6 +131,7 @@ function PostCard( { selectedPost,
           displayDelete = <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>  
             :
             displayDelete = null
+
   return(
     <div className="cards">
         <div className="card">
@@ -156,15 +152,19 @@ function PostCard( { selectedPost,
                       setIsEditing={setIsEditing}
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-           Press to like post:  <BsHeartFill onClick={handleLikes}/> Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
+
+           Press to like post:  <BsHeartFill onClick={handleLikes}/> 
+           Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
+
             <br></br>Likes:
+
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
             return ( <Likes 
                             key={like.id} 
                             like={like} 
-                           
                       />
             )})}
+            
             <div>{selectedPost.description}</div>
             <div className="comments">
                 <br></br><button onClick={() => setShowComments(true)}>View all comments</button> 

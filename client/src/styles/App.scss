@@ -11,17 +11,12 @@ body {
 }
 
 main {
- 
-
-    background-size: 50%, 25%, 25%;
-    background-position: center;
-    margin-top: 60px;
 
     .container {
         display: flex;
         justify-content: center;
         margin: 0 auto;
-        max-width: 1000px;
+        max-width: 500px;
     }
 }
 

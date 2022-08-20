@@ -6,6 +6,7 @@ import PostContainer from "./PostContainer";
 import PostForm from './PostForm';
 import PostCard from './PostCard';
 import UserProfile from './UserProfile';
+import '../styles/App.scss'
 
 
 function App() {
@@ -109,17 +110,14 @@ function App() {
     setComment(filteredCommentsToo)
   }
 
-  // const filteredTrueLikes = likes.filter((like) => like.like.includes("true"))
-  // const filteredFalseLikes = likes.filter((like) => like.like.includes("false"))
-
-
+  // filter all users by username
   const filteredUsers = findUser.filter((user) => user.username).map((user) => user.username)
-  console.log(filteredUsers)
+
   
 
   return (
    
-     <div>
+     <div className="container">
 
       
           <Navigation 
