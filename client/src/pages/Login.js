@@ -6,19 +6,31 @@ import SignUpForm from "../components/SignUpForm";
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
-
+  
   return (
-    <div>
+    <div className="body">
+      
+
+
+  <div class='light x1'></div>
+  <div class='light x2'></div>
+  <div class='light x3'></div>
+  <div class='light x4'></div>
+  <div class='light x5'></div>
+  <div class='light x6'></div>
+  <div class='light x7'></div>
+  <div class='light x8'></div>
+  <div class='light x9'></div>
       {showLogin ? (
-        <div > 
+        <div> 
           <LoginForm onLogin={onLogin} />
           <div className="container">
-          <p className="box">
+          <div className="box">
             Don't have an account? &nbsp;
             <button className="signup" color="secondary" onClick={() => setShowLogin(false)}>
               Sign Up
             </button>
-          </p>
+          </div>
           </div>
         </div>
       ) : (

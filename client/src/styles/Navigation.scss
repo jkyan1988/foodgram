@@ -2,9 +2,9 @@
 
 .navigation {
     position: flex;
-    top: 0;
+    top: 1;
     z-index: 2;
-    background-color: $background-white;
+   
     width: 100%;
     border-bottom: 1px solid $border-color-grey;
 
@@ -12,10 +12,10 @@
     .container {
         padding: 1em 0 0.9em 0;
         display: flex;
-        align-content: right;
+        align-content: justify;
         justify-content: space-between;
         max-width: 1000px;
-        margin: 0 auto;
+      
 
         .logo {
             padding: 0 1em;
@@ -26,27 +26,6 @@
             }
         }
 
-        // .search {
-        //     border: 1px solid $border-color-grey;
-        //     border-radius: 3px;
-        //     background-color: $background-grey;
-        //     min-width: 225px;
-        //     display: flex;
-        //     align-items: center;
-        //     justify-content: center;
-
-        //     .searchIcon {
-        //         width: 10px;
-        //         opacity: 0.4;
-        //         margin-right: 0.3em;
-        //     }
-
-        //     .searchText {
-        //         color: $font-color-secondary;
-        //         font-size: 0.85em;
-        //         font-weight: 300;
-        //     }
-        // }
 
     }
 }
@@ -56,4 +35,5 @@
     .search {
         display: none !important
     }
+
 }

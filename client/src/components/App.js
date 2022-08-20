@@ -15,6 +15,7 @@ function App() {
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
 
+
  // all comments
   useEffect(() => {
     fetch('/comments')
@@ -84,6 +85,17 @@ function App() {
     setComment(filteredComments)
   }
 
+  function onUpdateLike(updatedLike){
+    const filteredLikes = likes.map((like) => {
+      if (like.id === updatedLike.id) {
+        return updatedLike
+      } else {
+        return like
+      }
+    })
+    setLikes(filteredLikes)
+  }
+
 
 // return all posts that's not deleted
   function onDeletePost(id){
@@ -97,13 +109,25 @@ function App() {
     setComment(filteredCommentsToo)
   }
 
+  // const filteredTrueLikes = likes.filter((like) => like.like.includes("true"))
+  // const filteredFalseLikes = likes.filter((like) => like.like.includes("false"))
+
+
+  const filteredUsers = findUser.map((user) => user.username)
+  console.log(filteredUsers)
+  
+
   return (
-    <div>
+   
+     <div>
+
+      
           <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
           />
     <div>
+
       <Switch>
        
         <Route path="/profile">
@@ -126,11 +150,14 @@ function App() {
           onDeletePost={onDeletePost}
           onUpdateComment={onUpdateComment}
           onDeleteComment={onDeleteComment}
+          onUpdateLike={onUpdateLike}
+          user={user}
           />
         </Route>
         
       </Switch>
     </div>
+  
         <div>
           <Switch>
             
@@ -147,6 +174,8 @@ function App() {
                 onDeletePost={onDeletePost}
                 onUpdateComment={onUpdateComment}
                 onDeleteComment={onDeleteComment}
+                onUpdateLike={onUpdateLike}
+                
               />
             </Route>
             <Route path="/login">

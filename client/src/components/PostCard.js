@@ -7,17 +7,20 @@ import Likes from './Likes';
 import EditPost from './EditPost';
 import { BsHeartFill } from "react-icons/bs";
 import { FaHeartBroken } from 'react-icons/fa'
+import UserProfileInfo from './UserProfileInfo';
 
 function PostCard( { selectedPost, 
                     comments, 
                     setComment,
                     likes,
                     setLikes,
-                    findUserName,
+                    findUser,
                     onUpdatePost,
                     onDeletePost,
                     onUpdateComment,
-                    onDeleteComment
+                    onDeleteComment,
+                    onUpdateLike,
+                    user
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -25,6 +28,7 @@ function PostCard( { selectedPost,
     const [ isEditing, setIsEditing ] = useState(false)
     const [ isEditingComment, setIsEditingComment ] = useState(false)
     const [ newComment, setNewComment ] = useState("")
+    const [ showComments, setShowComments ] = useState(false)
 
     
 // Submit Comment
@@ -111,11 +115,21 @@ function PostCard( { selectedPost,
                         .then((response) => response.json())
                         .then((newLike) => setLikes([newLike, ...likes]))
            };
-       
+          //  function handleDeleteLikes(id){
+          //   fetch(`/likes/${id}`, {
+          //     method: 'DELETE',
+          //   })
+          //   setLikes(onUpdateLike)
+          // }
+       console.log(findUser)
   return(
     <div className="cards">
         <div className="card">
-            <header>{findUserName}
+            <header>{
+      findUser.filter((user) => user.id === selectedPost.user_id).map((user) => {
+        return ( <UserProfileInfo key={user.id} user={user} /> )
+      })
+    }
             <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>
             <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>
             </header>
@@ -130,14 +144,29 @@ function PostCard( { selectedPost,
            Press to like post:  <BsHeartFill onClick={handleLikes}/> Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
             <br></br>Likes:
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
-            return ( <Likes key={like.id} like={like}/>
+            return ( <Likes 
+                            key={like.id} 
+                            like={like} 
+                           
+                      />
             )})}
             <div>{selectedPost.description}</div>
             <div className="comments">
-                <br></br><b>Comments</b> 
+                <br></br><button onClick={() => setShowComments(true)}>View all comments</button> 
+                <button  onClick={() => setShowComments(false)}>Collapse Comments</button>
+                <div style={showComments === false ? {display: "none"} : {display: ""}}>
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
-                    return (<Comment key={comment.id} comment={comment} setComment={setComment} onUpdateComment={onUpdateComment} onDeleteComment={onDeleteComment} />)
+                    return (<Comment 
+                                    key={comment.id} 
+                                    comment={comment} 
+                                    setComment={setComment} 
+                                    onUpdateComment={onUpdateComment} 
+                                    onDeleteComment={onDeleteComment} 
+                                    findUser={findUser}
+                                    currentUser = {user}
+                            />)
                    })} 
+                   </div>
             <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
             <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>
                 <form onSubmit={handleCommentSubmit}>

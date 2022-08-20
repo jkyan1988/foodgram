@@ -9,6 +9,9 @@ function Menu( { user, handleLogoutClick }) {
     return(
         <div className="menu">
             <NavLink exact to="/">
+                <h1>FOODGRAM</h1>
+                </NavLink>  
+            <NavLink exact to="/">
             <Home className="icon" />
             </NavLink>
             <NavLink exact to="/profile">
