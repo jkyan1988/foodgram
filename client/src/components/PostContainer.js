@@ -14,7 +14,8 @@ function PostContainer( {   posts,
                             onUpdateComment,
                             onDeleteComment,
                             onUpdateLike,
-                            user
+                            user,
+                            filteredUsers
                         } 
                         )
                         {
@@ -39,6 +40,7 @@ function PostContainer( {   posts,
                     onDeleteComment={onDeleteComment}
                     onUpdateLike={onUpdateLike}
                     user={user}
+                    filteredUsers={filteredUsers}
                 /> 
                 )})} 
                 

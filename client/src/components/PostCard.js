@@ -20,7 +20,8 @@ function PostCard( { selectedPost,
                     onUpdateComment,
                     onDeleteComment,
                     onUpdateLike,
-                    user
+                    user,
+                    filteredUsers
                 } ){
     const [ currentPost, setCurrentPost ] = useState(selectedPost) 
     const [ editPost, setEditPost ] = useState(currentPost.post)
@@ -121,7 +122,20 @@ function PostCard( { selectedPost,
           //   })
           //   setLikes(onUpdateLike)
           // }
-       console.log(findUser)
+          const filterCurrentPostUserId = findUser.filter((user) => user.id === selectedPost.user_id).map((user) => user.id)
+
+
+          let displayEdit 
+          filterCurrentPostUserId == user.id ?
+            displayEdit = <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>  
+            :
+            displayEdit = null
+        
+          let displayDelete 
+          filterCurrentPostUserId == user.id ?
+          displayDelete = <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>  
+            :
+            displayDelete = null
   return(
     <div className="cards">
         <div className="card">
@@ -130,8 +144,9 @@ function PostCard( { selectedPost,
         return ( <UserProfileInfo key={user.id} user={user} /> )
       })
     }
-            <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>
-            <TbPencil className="cardButton" onClick={() => setIsEditing(true)}/>
+            {displayDelete}
+            {displayEdit}
+            
             </header>
             <EditPost 
                       isEditing={isEditing}
@@ -153,7 +168,7 @@ function PostCard( { selectedPost,
             <div>{selectedPost.description}</div>
             <div className="comments">
                 <br></br><button onClick={() => setShowComments(true)}>View all comments</button> 
-                <button  onClick={() => setShowComments(false)}>Collapse Comments</button>
+                
                 <div style={showComments === false ? {display: "none"} : {display: ""}}>
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
                     return (<Comment 
@@ -164,8 +179,11 @@ function PostCard( { selectedPost,
                                     onDeleteComment={onDeleteComment} 
                                     findUser={findUser}
                                     currentUser = {user}
+                                    setShowComments={setShowComments}
+                                    filteredUsers={filteredUsers}
                             />)
                    })} 
+                   <button  onClick={() => setShowComments(false)}>Collapse Comments</button>
                    </div>
             <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
             <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>

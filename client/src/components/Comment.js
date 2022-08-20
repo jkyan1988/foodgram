@@ -9,7 +9,9 @@ function Comment( { comment,
                     onUpdateComment, 
                     onDeleteComment, 
                     findUser,
-                    currentUser
+                    currentUser,
+                    setShowComments,
+                    filteredUsers
                    } ){
 
     const [isEditing, setIsEditing] = useState(false)
@@ -41,14 +43,26 @@ function Comment( { comment,
           })
           onDeleteComment(id)
           }
-          console.log(currentUser.username)
+          // console.log(currentUser.username)
 
           const commentUser = findUser.filter((user) => user.id === comment.user_id).map((user) => user.username)
           const commentUserPic = findUser.filter((user) => user.id === comment.user_id).map((user) => user.profile_pic)
           // const canEditComment = (commentUser === user.username) ? true : false
 // if (commentUser === user.username) return <TbPencil> 
+          const filterCurrentCommentUserId = findUser.filter((user) => user.id === comment.user_id).map((user) => user.id)
 
-          
+          let displayEdit 
+          filterCurrentCommentUserId == currentUser.id ?
+            displayEdit = <TbPencil onClick={() => setIsEditing(true)}/>  
+            :
+            displayEdit = null
+          console.log(filterCurrentCommentUserId)
+          let displayDelete 
+          filterCurrentCommentUserId == currentUser.id ?
+          displayDelete = <RiDeleteBinLine onClick={() => handleDelete(comment.id)}/>  
+            :
+            displayDelete = null
+
     return(
         <div>
           
@@ -59,17 +73,16 @@ function Comment( { comment,
             <h4>{commentUser}</h4>  
             {comment.comment} 
            
-            {(commentUser === currentUser.username) ?
+          
            
-           (<span>  
-           <TbPencil onClick={() => setIsEditing(true)}/>  
-           <RiDeleteBinLine onClick={() => handleDelete(comment.id)}/>
-           </span> )
+           <span>  
+           {displayEdit}
+           {displayDelete}
+           </span> 
 
-           :
+         
 
-           (<span></span>)        
-           }
+          
 
 
            </span>

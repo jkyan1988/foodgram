@@ -113,7 +113,7 @@ function App() {
   // const filteredFalseLikes = likes.filter((like) => like.like.includes("false"))
 
 
-  const filteredUsers = findUser.map((user) => user.username)
+  const filteredUsers = findUser.filter((user) => user.username).map((user) => user.username)
   console.log(filteredUsers)
   
 
@@ -152,6 +152,7 @@ function App() {
           onDeleteComment={onDeleteComment}
           onUpdateLike={onUpdateLike}
           user={user}
+          filteredUsers={filteredUsers}
           />
         </Route>
         
@@ -175,7 +176,7 @@ function App() {
                 onUpdateComment={onUpdateComment}
                 onDeleteComment={onDeleteComment}
                 onUpdateLike={onUpdateLike}
-                
+                filteredUsers={filteredUsers}
               />
             </Route>
             <Route path="/login">
