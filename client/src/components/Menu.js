@@ -7,10 +7,11 @@ import { GrLogout } from 'react-icons/gr';
 
 function Menu( { user, handleLogoutClick }) {
     return(
-        <div className="menu">
+        <div>
             <NavLink exact to="/">
-                <h1>FOODGRAM</h1>
-                </NavLink>  
+            <h1 className="foodgram">FOODGRAM</h1>
+            </NavLink>  
+            <div className="menu">
             <NavLink exact to="/">
             <Home className="icon" />
             </NavLink>
@@ -18,6 +19,7 @@ function Menu( { user, handleLogoutClick }) {
             <ProfileIcon user={user} iconSize="small" image={image}/>
             </NavLink>
             <GrLogout onClick={handleLogoutClick} style={{ marginLeft: "15px"}} className="icon"></GrLogout>
+            </div>
         </div>
     )
 }

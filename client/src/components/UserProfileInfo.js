@@ -3,8 +3,11 @@ import '../styles/userprofileinfo.scss';
 function UserProfileInfo( { user }){
     return(
         <div>
-            <img src={user.profile_pic} className="userpost"/>
-            <span><h4>{user.username}</h4></span>
+            <div>
+                <img src={user.profile_pic} className="userpost"/>
+                <span className="username">{user.username}</span>
+            </div>
+                {/* <h4 className="username">{user.username}</h4> */}
         </div>
     )
 }

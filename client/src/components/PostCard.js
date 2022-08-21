@@ -152,23 +152,30 @@ function PostCard( { selectedPost,
                       setIsEditing={setIsEditing}
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
+           <div className="description">
 
            Press to like post:  <BsHeartFill onClick={handleLikes}/> 
            Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
 
-            <br></br>Likes:
 
+           <br></br>
+            Likes:
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
-            return ( <Likes 
-                            key={like.id} 
+              return ( <Likes 
+                key={like.id} 
                             like={like} 
                       />
             )})}
-            
-            <div>{selectedPost.description}</div>
+            </div>
+            <div className="description">{selectedPost.description}</div>
             <div className="comments">
-                <br></br><button onClick={() => setShowComments(true)}>View all comments</button> 
-                
+                <br></br>
+                {(showComments === false)
+                ?
+                <button className="viewcomments" onClick={() => setShowComments(true)}>View all comments</button> 
+                :
+                <button className="collapse-btn" onClick={() => setShowComments(false)}>Collapse comments</button>
+                }
                 <div style={showComments === false ? {display: "none"} : {display: ""}}>
             {comments.filter((comment) => comment.post_id === selectedPost.id).map((comment) => {
                     return (<Comment 
@@ -183,18 +190,17 @@ function PostCard( { selectedPost,
                                     filteredUsers={filteredUsers}
                             />)
                    })} 
-                   <button  onClick={() => setShowComments(false)}>Collapse Comments</button>
                    </div>
-            <button onClick={() => setIsEditingComment(true)}>Add a comment</button>
-            <div style={isEditingComment === false ? {display: "none"} : {display: ""}}>
-                <form onSubmit={handleCommentSubmit}>
-                    <input onChange={(e) => setNewComment(e.target.value)} type="text"/>
-                    <button onClick={(e) => {e.stopPropagation()}}>Submit</button>
+            {/* <button onClick={() => setIsEditingComment(true)}>Add a comment</button> */}
+            {/* <div style={isEditingComment === false ? {display: "none"} : {display: ""}}> */}
+                <form  onSubmit={handleCommentSubmit}>
+                    <input className="comment-form" onChange={(e) => setNewComment(e.target.value)} type="text"/>
+                    <button className="post-btn" onClick={(e) => {e.stopPropagation()}}>Post</button>
                 </form>
-                    <button onClick={(e) => {
+                    {/* <button onClick={(e) => {
                       e.stopPropagation()
-                      setIsEditingComment(false)}}>Cancel</button>
-            </div>
+                      setIsEditingComment(false)}}>Cancel</button> */}
+            {/* </div> */}
             </div> 
         </div>
     </div>

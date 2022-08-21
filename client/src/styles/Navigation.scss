@@ -1,9 +1,10 @@
 @import "./properties.scss";
 
 .navigation {
-    position: flex;
-    top: 1;
+    position: fixed;
+    top: 0;
     z-index: 2;
+    background-color: $background-white;
    
     width: 100%;
     border-bottom: 1px solid $border-color-grey;
@@ -15,6 +16,7 @@
         align-content: justify;
         justify-content: space-between;
         max-width: 1000px;
+        margin: 0 auto;
       
 
         .logo {
@@ -32,8 +34,6 @@
 
 
 @media only screen and (max-width: 500px) {
-    .search {
-        display: none !important
-    }
+   
 
 }

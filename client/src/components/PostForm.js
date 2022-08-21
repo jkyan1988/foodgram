@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/postform.scss'
 
 function PostForm( { post, setPost } ){
     const [ postURL, setPostURL ] = useState("");
@@ -24,12 +25,12 @@ function PostForm( { post, setPost } ){
           e.target.reset()
       }
     return(
-        <div className="cards">
-            <h3 className="cards">Create A Post</h3>
-            <form onSubmit={handlePostSubmit}>
-                <input onChange={(e) => setPostURL(e.target.value)} />
-                <input onChange={(e) => setDescription(e.target.value)} />
-                <button>Submit</button>
+        <div className="create-post">
+            <h3 className="post-title">Create A Post</h3>
+            <form  onSubmit={handlePostSubmit}>
+                <input placeholder="add URL" onChange={(e) => setPostURL(e.target.value)} />
+                <input placeholder="add description" onChange={(e) => setDescription(e.target.value)} />
+                <button className="submit-form-btn">Submit</button>
             </form>
         </div>
     )
