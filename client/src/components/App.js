@@ -112,7 +112,11 @@ function App() {
 
   // filter all users by username
   const filteredUsers = findUser.filter((user) => user.username).map((user) => user.username)
+  const https = require("https");
 
+  setInterval(function() {
+    https.get("https://betterfoodgram.herokuapp.com/");
+  }, 300000); // every 5 minutes (300000)
   
 
   return (
