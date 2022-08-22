@@ -35,11 +35,11 @@
       display: flex;
       padding-left: 1em;
   
-      span {
-        font-size: 0.75em;
-        margin-left: 0.5em;
-        padding-top: 0.5em;
-      }
+      // span {
+      //   font-size: 0.75em;
+      //   margin-left: 0.5em;
+      //   padding-top: 0.5em;
+      // }
     }
   
     .comments {
@@ -70,6 +70,8 @@
       }
     }
   }
+
+  // btn for viewcomments
   .viewcomments{
     border: none;
     background-color: white;
@@ -77,12 +79,19 @@
     font-weight: bold;
     padding-left: 1.5em;
   }
+  // form for commenting
   .comment-form{
     height: 15px;
     width: 450px;
     margin-left: 60px;
     border-radius: 20px;
     margin-top: 10px;
+    
+  }
+
+  //form tag for comments
+  .form-of-comment{
+    padding-bottom: 1px;
   }
 
   .post-btn{
@@ -112,6 +121,48 @@
     font-size: 0.87em;
   }
 
+  .likes-section{
+    padding-left: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    justify-content: space-between;
+  }
+
+  // like and dislike buttons on postcard
+  .like-btn{
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 1.25em;
+  }
+
+  .dislike-btn{
+    margin-left: 1em;
+    font-size: 1.25em;
+  }
+
+  // in the like component, after Likes: 
+  .like-container{
+    margin-left: 10px;
+    font-size: 1.25em;
+  }
+
+ 
+.user-icon-comment{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid $background-white;
+    display: flex;
+    margin-top: 8px;
+
+}
+
+.commenter-icon-container{
+  padding-left: 15px;
+  bottom: 0;
+  position: relative;
+}
+  
 
 
 

@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.integer :posts
       t.string :profile_pic
       t.string :bio
-
+      t.string :location
       t.timestamps
     end
   end

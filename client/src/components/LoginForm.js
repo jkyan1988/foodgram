@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import foodgram from '../images/foodgramlogo.jpg'
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -29,7 +30,7 @@ function LoginForm({ onLogin }) {
     
      <div className="container">
      <div className="box">
-       <div className="heading"></div>
+       <div className="heading">FOODGRAM</div>
        <form className="login-form" onSubmit={handleSubmit}>
          <div className="field">
            <input

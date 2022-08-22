@@ -49,16 +49,21 @@ a {
   margin: 0 0 10px;
   padding: 10px 0;
   // flex-grow: 1;
-  background: radial-gradient(#44b8c9,#355e54);
+  background: radial-gradient(#37d088,#243d36);
 }
 
 .heading {
   margin: 22px auto 12px;
-  background-image: url("https://www.instagram.com/static/bundles/es6/sprite_core_b20f2a3cd7e4.png/b20f2a3cd7e4.png");
-  background-position: -98px 0;
-  height: 51px;
-  width: 177px;
+  // background-image: url("https://cdn.dribbble.com/users/5328477/screenshots/11437476/media/0213cc6708fbaf4e739bb9a9b69f75b9.jpg");
+  // background-position: -98px 0;
+  // background-position: -50px 0;
+  // height: 51px;
+  // width: 177px;
+  font-family: 'Montserrat', sans-serif;
   overflow: hidden;
+  font-weight: bolder;
+  font-size: 40px;
+  color: rgb(175, 172, 172);
 }
 
 .field {
@@ -128,7 +133,7 @@ input:not(:placeholder-shown) {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  background: radial-gradient(#44b8c9,#355e54);
+  background: radial-gradient(#37d088,#243d36);
 }
 
 // .separator {
@@ -175,7 +180,7 @@ input:not(:placeholder-shown) {
 
 .signup {
   margin-bottom: 10px;
-  color: #3897f0;
+  color: rgb(158, 154, 154);
   font-weight: 600;
   text-align: center;
   width: 40%;
@@ -186,14 +191,14 @@ input:not(:placeholder-shown) {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  background: radial-gradient(#44b8c9,#355e54);
+  background: radial-gradient(#37d088,#243d36);
 }
 
 .body {
   margin: 0;
   height: 100vh;
   font-weight: 100;
-  background: radial-gradient(#44b8c9,#355e54);
+  background: radial-gradient(#37d088,#243d36);
   -webkit-overflow-Y: hidden;
   -moz-overflow-Y: hidden;
   -o-overflow-Y: hidden;

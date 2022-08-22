@@ -7,7 +7,7 @@ function Navigation( { user, handleLogoutClick } ) {
     return(
         <div className="navigation"> 
                       
-            <div className="container">
+            <div>
                 <Menu user={user} handleLogoutClick={handleLogoutClick}/>
             </div> 
         </div>

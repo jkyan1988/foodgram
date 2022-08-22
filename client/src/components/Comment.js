@@ -75,7 +75,7 @@ function Comment( { comment,
            
           
            
-           <span>  
+           <span className="edit-comment-icons">  
            {displayEdit}
            {displayDelete}
            </span> 

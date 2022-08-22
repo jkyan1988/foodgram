@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import { RiDeleteBinLine } from 'react-icons/ri';
 import Likes from './Likes';
 import EditPost from './EditPost';
-import { BsHeartFill } from "react-icons/bs";
-import { FaHeartBroken } from 'react-icons/fa'
 import UserProfileInfo from './UserProfileInfo';
+import { FcLike } from "react-icons/fc";
+import { FcDislike } from 'react-icons/fc'
 
 function PostCard( { selectedPost, 
                     comments, 
@@ -135,14 +135,13 @@ function PostCard( { selectedPost,
   return(
     <div className="cards">
         <div className="card">
-            <header>{
-      findUser.filter((user) => user.id === selectedPost.user_id).map((user) => {
-        return ( <UserProfileInfo key={user.id} user={user} /> )
-      })
-    }
+            <header className="poster">
+      {findUser.filter((user) => user.id === selectedPost.user_id).map((user) => {
+        return ( <UserProfileInfo key={user.id} user={user} /> )})}
+
             {displayDelete}
             {displayEdit}
-            
+
             </header>
             <EditPost 
                       isEditing={isEditing}
@@ -152,12 +151,13 @@ function PostCard( { selectedPost,
                       setIsEditing={setIsEditing}
             />
             <img src={selectedPost.post} alt="" className="cardImage"/>
-           <div className="description">
+          <div className="likes-section">
 
-           Press to like post:  <BsHeartFill onClick={handleLikes}/> 
-           Press to dislike post:<FaHeartBroken  onClick={handleUnlikes}/> 
+           Like?:  <FcLike className="like-btn" onClick={handleLikes}/> 
+           
+           Dislike?: <FcDislike className="dislike-btn" onClick={handleUnlikes}/> 
 
-
+           <br></br>
            <br></br>
             Likes:
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
@@ -191,16 +191,11 @@ function PostCard( { selectedPost,
                             />)
                    })} 
                    </div>
-            {/* <button onClick={() => setIsEditingComment(true)}>Add a comment</button> */}
-            {/* <div style={isEditingComment === false ? {display: "none"} : {display: ""}}> */}
-                <form  onSubmit={handleCommentSubmit}>
+                  <div className="commenter-icon-container"><img alt='' src={user.profile_pic}  className="user-icon-comment"/></div> 
+                <form className="form-of-comment" onSubmit={handleCommentSubmit}>
                     <input className="comment-form" onChange={(e) => setNewComment(e.target.value)} type="text"/>
                     <button className="post-btn" onClick={(e) => {e.stopPropagation()}}>Post</button>
-                </form>
-                    {/* <button onClick={(e) => {
-                      e.stopPropagation()
-                      setIsEditingComment(false)}}>Cancel</button> */}
-            {/* </div> */}
+                </form>   
             </div> 
         </div>
     </div>

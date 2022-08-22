@@ -7,6 +7,7 @@ function SignUpForm({ onLogin }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [bio, setBio] = useState("");
+  const [location, setLocation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +41,7 @@ return (
     <>
 <div class="container">
 <div class="box">
-  <div class="heading"></div>
+  <div class="heading">FOODGRAM</div>
   <form class="login-form" onSubmit={handleSubmit}>
     <div class="field">
       <input
@@ -81,7 +82,7 @@ return (
           value={profilePic}
           onChange={(e) => setProfilePic(e.target.value)}
        />
-      <label for="password">Set Profile Pic</label>
+      <label for="profile pic">Set Profile Pic</label>
     </div>
     <div class="field">
     <input
@@ -90,7 +91,16 @@ return (
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
-      <label for="password">Set Bio</label>
+      <label for="bio">Set Bio</label>
+    </div>
+    <div class="field">
+    <input
+          type="text"
+          id="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+      <label for="location">Set Location</label>
     </div>
       <button class="login-button" title="login" variant="fill" color="primary" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
   </form>

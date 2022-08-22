@@ -23,3 +23,26 @@
         
     }
 }
+
+.edit-comment-icons{
+    margin-left: 1em;
+    margin-right: 1em;
+    
+}
+
+
+// edit form in editcomment component
+.edit-comment-btn{
+    border: none;
+    background-color: white;
+    color: navy;
+    font-weight: bold;
+}
+
+.edit-comment-input{
+    height: 15px;
+    width: 200px;
+    margin-left: 60px;
+    border-radius: 20px;
+    margin-top: 22px;
+}

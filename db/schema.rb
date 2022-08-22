@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_08_08_205842) do
     t.integer "posts"
     t.string "profile_pic"
     t.string "bio"
+    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

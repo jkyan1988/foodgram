@@ -12,12 +12,12 @@ class UsersController < ApplicationController
     end
   
     def show
-      render json: @current_user, serializer: UserWithCommentsSerializer
+      render json: @current_user
     end
   
     private
   
     def user_params
-      params.permit(:username, :password, :password_confirmation, :profile_pic, :bio)
+      params.permit(:username, :password, :password_confirmation, :profile_pic, :bio, :location)
     end
 end

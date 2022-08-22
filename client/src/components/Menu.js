@@ -9,9 +9,10 @@ function Menu( { user, handleLogoutClick }) {
     return(
         <div>
             <NavLink exact to="/">
-            <h1 className="foodgram">FOODGRAM</h1>
+            <h4 className="foodgram">FOODGRAM</h4>
             </NavLink>  
-            <div className="menu">
+            <div>
+                <div className="menu">
             <NavLink exact to="/">
             <Home className="icon" />
             </NavLink>
@@ -19,6 +20,7 @@ function Menu( { user, handleLogoutClick }) {
             <ProfileIcon user={user} iconSize="small" image={image}/>
             </NavLink>
             <GrLogout onClick={handleLogoutClick} style={{ marginLeft: "15px"}} className="icon"></GrLogout>
+                </div>
             </div>
         </div>
     )
