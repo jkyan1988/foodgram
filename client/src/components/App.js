@@ -16,6 +16,7 @@ function App() {
   const [ comment, setComment ] = useState([])
   const [ likes, setLikes ] = useState([]);
   const [ findUser, setFindUser ] = useState([]);
+  const [ showPostForm, setShowPostForm ] = useState(false);
 
 
  // all comments
@@ -128,6 +129,8 @@ function App() {
           <Navigation 
           user={user} 
           handleLogoutClick={handleLogoutClick} 
+          setShowPostForm={setShowPostForm}
+          showPostForm={showPostForm}
           />
     <div>
 
@@ -143,6 +146,7 @@ function App() {
           <PostForm
           post={post} 
           setPost={setPost}
+          showPostForm={showPostForm}
           />
           <PostContainer 
           posts={post} 

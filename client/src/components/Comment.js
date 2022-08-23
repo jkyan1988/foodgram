@@ -55,7 +55,7 @@ function Comment( { comment,
             displayEdit = <TbPencil onClick={() => setIsEditing(true)}/>  
             :
             displayEdit = null
-          console.log(filterCurrentCommentUserId)
+   
           let displayDelete 
           filterCurrentCommentUserId == currentUser.id ?
           displayDelete = <RiDeleteBinLine onClick={() => handleDelete(comment.id)}/>  
@@ -69,7 +69,7 @@ function Comment( { comment,
            
            <span> 
             <br></br>
-            <img className="commentericon" src={commentUserPic} />
+            <span className="commenter-icon-container"><img className="commentericon" src={commentUserPic} /></span>
             <b className="accountName">{commentUser}</b>  
             <span className="comment">{comment.comment} </span>
            
@@ -77,8 +77,12 @@ function Comment( { comment,
            
            <span className="edit-comment-icons">  
            {displayEdit}
-           {displayDelete}
            </span> 
+           <span className="edit-comment-icons-trash"> 
+            {displayDelete}
+            </span>
+          
+           
 
          
 

@@ -81,25 +81,26 @@
   }
   // form for commenting
   .comment-form{
-    height: 15px;
+    height: 12px;
     width: 450px;
-    margin-left: 60px;
+    margin-left: 15px;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 15px;
     
   }
+ 
 
   //form tag for comments
   .form-of-comment{
-    padding-bottom: 1px;
+    display: flex;
   }
 
   .post-btn{
     display: block;
     text-align: center;
-    float: right;
-   margin-right: 10px;
-   margin-top: 14px;
+    float: left;
+   margin-left: 10px;
+  //  margin-top: 14px;
    border: none;
    color: navy;
    background-color: white;
@@ -152,16 +153,16 @@
     height: 25px;
     border-radius: 50%;
     border: 2px solid $background-white;
-    display: flex;
-    
-    
+    display: block;
+    margin-bottom: 14px;
+    float: inline-start;
 }
 
 .commenter-icon-container{
   padding-left: 17px;
   // bottom: 0;
-  padding-top: 10px;
-  margin-top: 20px;
+  // padding-top: 10px;
+  margin-top: 15px;
   // position: relative;
 
 }

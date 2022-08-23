@@ -102,9 +102,9 @@ label {
 
 /* hiding placeholder in all browsers */
 
-input::placeholder {
-  visibility: hidden;
-}
+// input::placeholder {
+//   // visibility: hidden;
+// }
 
 /* hiding  placeholder in mozilla */
 .login-form ::-moz-placeholder {

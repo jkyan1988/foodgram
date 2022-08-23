@@ -208,10 +208,11 @@ function PostCard( { selectedPost,
                             />)
                    })} 
                    </div><br></br>
-                  <div className="commenter-icon-container"><img alt='' src={user.profile_pic}  className="user-icon-comment"/></div> 
+                  
                 <form className="form-of-comment" onSubmit={handleCommentSubmit}>
-                    <input className="comment-form" onChange={(e) => setNewComment(e.target.value)} type="text"/>
                     <button className="post-btn" onClick={(e) => {e.stopPropagation()}}>Post</button>
+                    <input id="comment-form" name="comment-form" placeholder="Enter comment..." className="comment-form" onChange={(e) => setNewComment(e.target.value)} type="text"/>
+                    <div className="commenter-icon-container"><img className="user-icon-comment" alt='' src={user.profile_pic}  /></div>
                 </form>   
             </div> 
         </div>

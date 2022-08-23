@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../styles/postform.scss'
 
-function PostForm( { post, setPost } ){
+function PostForm( { post, setPost, showPostForm } ){
     const [ postURL, setPostURL ] = useState("");
     const [ description, setDescription ] = useState("");
 
@@ -25,8 +25,8 @@ function PostForm( { post, setPost } ){
           e.target.reset()
       }
     return(
-        <div className="create-post">
-            <h3 className="post-title">Post it!</h3>
+        <div style={showPostForm === false ? {display: "none"} : {display: ""}} className="create-post">
+            {/* <h3 className="post-title">Post it!</h3> */}
             <form className="post-form-container" onSubmit={handlePostSubmit}>
                 <input id="post-form" type="text" className="post-form" placeholder="add URL" onChange={(e) => setPostURL(e.target.value)} />
                 <input id="desc-form" type="text" className="desc-form" placeholder="add description" onChange={(e) => setDescription(e.target.value)} />

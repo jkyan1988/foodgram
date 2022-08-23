@@ -19,6 +19,10 @@ function UserProfile( { user, posts }){
                     display: "flex",
                     justifyContent: "space-around",
                     margin: "20px 0px",
+                    backgroundColor: "white",
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                    borderRadius: "10px"
                     // borderBottom: "1px solid grey"
 
                 }}>
@@ -37,12 +41,22 @@ function UserProfile( { user, posts }){
                     </div>
                 </div>
             </div>
-            <div className="gallery">
+            <div style={{backgroundColor: "white",
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        borderRadius: "10px"
+                        }} 
+                        className="gallery"
+            >
                 {posts.map((post) => {
                     if (post.user_id === user.id) {
                     return (
                         
-                        <img className="item" alt="" src={post.post}/>
+                        <img style={{ 
+                            paddingTop: "10px",
+                            paddingBottom: "10px"
+                        }} 
+                            className="item" alt="" src={post.post}/>
                         
                       
                     
