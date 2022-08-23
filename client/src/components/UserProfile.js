@@ -1,6 +1,16 @@
 import '../styles/userprofile.scss';
+import Youtube from 'react-youtube';
 
 function UserProfile( { user, posts }){
+
+    const opts = {
+        height: '350',
+        width: '100%',
+        playerVars: {
+                      autoplay: 1,
+                    },
+    };
+
     return (
         <div style={{
             maxWidth: '600px', margin: '0px auto'
@@ -31,7 +41,11 @@ function UserProfile( { user, posts }){
                 {posts.map((post) => {
                     if (post.user_id === user.id) {
                     return (
-                        <img className="item" alt="" src={post.post}/>   
+                        
+                        <img className="item" alt="" src={post.post}/>
+                        
+                      
+                    
                     )
                 }})}
 

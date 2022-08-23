@@ -1,4 +1,4 @@
-
+import '../styles/EditPost.scss'
  
 function EditPost( { 
                         isEditing,
@@ -10,14 +10,14 @@ function EditPost( {
 
     return(
         <div style={isEditing === false ? {display: "none"} : {display: ""}}>
-                <h3>Edit Post</h3>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Post URL" onChange={(e) => setEditPost(e.target.value)}/>
-                    <input type="text" placeholder="Caption" onChange={(e) => setEditDescription(e.target.value)}/>
-                    <button>Submit</button>
-                    <button onClick={(e) => {
+                <h3 className="edit-post-title">Edit Post</h3>
+                <form className="edit-post" onSubmit={handleSubmit}>
+                    <button className="edit-cancel-btn" onClick={(e) => {
                       e.stopPropagation()
-                      setIsEditing(false)}}>Cancel</button>
+                      setIsEditing(false)}}>X</button>
+                    <input className="edit-post-url" type="text" placeholder="Edit Post URL" onChange={(e) => setEditPost(e.target.value)}/>
+                    <input className="edit-post-desc" type="text" placeholder="Edit Caption" onChange={(e) => setEditDescription(e.target.value)}/>
+                    <button className="edit-submit-btn">Submit</button>
                 </form>
             </div>
     )

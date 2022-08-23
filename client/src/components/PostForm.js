@@ -27,9 +27,9 @@ function PostForm( { post, setPost } ){
     return(
         <div className="create-post">
             <h3 className="post-title">Post it!</h3>
-            <form  onSubmit={handlePostSubmit}>
-                <input className="post-form" placeholder="add URL" onChange={(e) => setPostURL(e.target.value)} />
-                <input className="desc-form" placeholder="add description" onChange={(e) => setDescription(e.target.value)} />
+            <form className="post-form-container" onSubmit={handlePostSubmit}>
+                <input id="post-form" type="text" className="post-form" placeholder="add URL" onChange={(e) => setPostURL(e.target.value)} />
+                <input id="desc-form" type="text" className="desc-form" placeholder="add description" onChange={(e) => setDescription(e.target.value)} />
                 <button className="submit-form-btn">Submit</button>
             </form>
         </div>

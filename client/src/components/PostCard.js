@@ -8,6 +8,7 @@ import EditPost from './EditPost';
 import UserProfileInfo from './UserProfileInfo';
 import { FcLike } from "react-icons/fc";
 import { FcDislike } from 'react-icons/fc'
+import Youtube from 'react-youtube'
 
 function PostCard( { selectedPost, 
                     comments, 
@@ -131,6 +132,17 @@ function PostCard( { selectedPost,
           displayDelete = <RiDeleteBinLine onClick={() => handleDelete(currentPost.id)}/>  
             :
             displayDelete = null
+          
+          const opts = {
+              height: '350',
+              width: '100%',
+              playerVars: {
+                            autoplay: 1,
+                          },
+          };
+         
+          let videoId
+            selectedPost.post.startsWith("https://youtu.be") ? videoId = selectedPost.post.slice(17, 28) : videoId = selectedPost.post.slice(32, 43)
 
   return(
     <div className="cards">
@@ -150,7 +162,12 @@ function PostCard( { selectedPost,
                       setEditDescription={setEditDescription}
                       setIsEditing={setIsEditing}
             />
-            <img src={selectedPost.post} alt="" className="cardImage"/>
+            {selectedPost.post.includes("you") 
+            ?
+            <Youtube videoId={videoId} opts={opts} />
+            :
+            <img src={selectedPost.post} alt="" className="cardImage"/>}
+
           <div className="likes-section">
 
            Like?:  <FcLike className="like-btn" onClick={handleLikes}/> 
@@ -190,7 +207,7 @@ function PostCard( { selectedPost,
                                     filteredUsers={filteredUsers}
                             />)
                    })} 
-                   </div>
+                   </div><br></br>
                   <div className="commenter-icon-container"><img alt='' src={user.profile_pic}  className="user-icon-comment"/></div> 
                 <form className="form-of-comment" onSubmit={handleCommentSubmit}>
                     <input className="comment-form" onChange={(e) => setNewComment(e.target.value)} type="text"/>

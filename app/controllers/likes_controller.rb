@@ -2,7 +2,7 @@ class LikesController < ApplicationController
     skip_before_action :authorize, only: [:index, :show ]
     before_action :find_like, only: [ :show, :destroy]
     def index
-        render json: Like.all
+        render json: Like.all.order("created_at DESC")
     end
 
     def show

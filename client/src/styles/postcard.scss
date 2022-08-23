@@ -146,21 +146,29 @@
     font-size: 1.25em;
   }
 
- 
+ // img of commenter
 .user-icon-comment{
     width: 25px;
     height: 25px;
     border-radius: 50%;
     border: 2px solid $background-white;
     display: flex;
-    margin-top: 8px;
-
+    
+    
 }
 
 .commenter-icon-container{
-  padding-left: 15px;
-  bottom: 0;
-  position: relative;
+  padding-left: 17px;
+  // bottom: 0;
+  padding-top: 10px;
+  margin-top: 20px;
+  // position: relative;
+
+}
+
+.form-of-comment{
+    margin-left: 10px;
+    margin-bottom: 15px;
 }
   
 

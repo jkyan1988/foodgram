@@ -6,6 +6,7 @@ import PostContainer from "./PostContainer";
 import PostForm from './PostForm';
 import PostCard from './PostCard';
 import UserProfile from './UserProfile';
+import Explore from './Explore';
 import '../styles/App.scss'
 
 
@@ -112,11 +113,11 @@ function App() {
 
   // filter all users by username
   const filteredUsers = findUser.filter((user) => user.username).map((user) => user.username)
-  const https = require("https");
+  // const https = require("https");
 
-  setInterval(function() {
-    https.get("https://betterfoodgram.herokuapp.com/");
-  }, 300000); // every 5 minutes (300000)
+  // setInterval(function() {
+  //   https.get("https://betterfoodgram.herokuapp.com/");
+  // }, 300000); // every 5 minutes (300000)
   
 
   return (
@@ -135,6 +136,9 @@ function App() {
         <Route path="/profile">
           <UserProfile user={user} posts={post}/>
         </Route>
+        <Route path="/explore">
+            <Explore posts={post} user={user} />
+          </Route>
         <Route path="/">
           <PostForm
           post={post} 
@@ -184,6 +188,7 @@ function App() {
             <Route path="/login">
           <Login onLogin={setUser}/>
           </Route>
+          
           </Switch>
         
         </div>

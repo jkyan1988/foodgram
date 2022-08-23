@@ -1,6 +1,8 @@
+
+// div for create form
 .create-post{
     padding-bottom: 0.85em;
-    color: rgb(197, 191, 191);
+    color: black;
 }
 
 .submit-form-btn{
@@ -25,10 +27,20 @@
 .post-form{
     padding-right: 9px;
     margin-right: 8px;
+  
     font-family: 'Montserrat', sans-serif;
 }
 
 .desc-form{
-  
+    color: black;
     font-family: 'Montserrat', sans-serif;
+}
+.desc-form::placeholder{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.post-form-container{
+    display: inline-block;
+    margin-bottom: 10px;
 }
