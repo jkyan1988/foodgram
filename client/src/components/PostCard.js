@@ -176,7 +176,7 @@ function PostCard( { selectedPost,
 
            <br></br>
            <br></br>
-            Likes:
+           
             {likes && likes.filter((like) => like.post_id === selectedPost.id).map((like) => {
               return ( <Likes 
                 key={like.id} 

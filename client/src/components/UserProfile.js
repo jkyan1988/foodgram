@@ -26,14 +26,14 @@ function UserProfile( { user, posts }){
                     // borderBottom: "1px solid grey"
 
                 }}>
-                <div>
+                <div style={{ paddingLeft: "10px", paddingRight: "10px"}}>
                     <img style={{width:"160px", height: "160px", borderRadius:"80px"}} alt=""
                     src={user.profile_pic}
                     />
                 </div>
-                <div>
+                <div style={{ paddingLeft: "10px", paddingRight: "10px", paddingBottom: "10px" }}>
                     <h4>{user.username}</h4>
-                    <div style={{display: "flex", justifyContent: "space-between", width:"108%"}}>
+                    <div style={{display: "flex", justifyContent: "space-between", width:"108%", marginBottom: "10px"}}>
                        Location: {user.location}
                     </div>
                     <div>

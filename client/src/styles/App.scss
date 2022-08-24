@@ -1,8 +1,16 @@
 @import "./properties.scss";
-
+@keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    50% { background-position: 50% 0; }
+    100% { background-position: 0 0; }
+}
 
 body {
- 
+    background-image: url(../images/food.jpg);
+    // background-size: contain;
+    // background-repeat: repeat-y;
+    animation: animatedBackground 19s linear alternate infinite;
+    
     font-size: 16px;
     margin: 0;
     padding: 0;
@@ -11,7 +19,7 @@ body {
 }
 
 main {
-
+    
     .container {
         display: flex;
         justify-content: center;
