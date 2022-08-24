@@ -46,6 +46,7 @@ return (
     <div class="field">
       <input
         id="username"
+        className="sign-in-form"
         type="name"
         placeholder="Username"
         value={username}
@@ -56,6 +57,7 @@ return (
     <div class="field">
        <input 
            id="password" 
+           className="sign-in-form"
            type="password" 
            placeholder="password" 
            autoComplete="current-password"
@@ -67,6 +69,7 @@ return (
     <div class="field">
        <input 
            id="password" 
+           className="sign-in-form"
            type="password" 
            placeholder="password" 
            value={passwordConfirmation}
@@ -78,6 +81,7 @@ return (
     <div class="field">
        <input 
         type="text"
+        className="sign-in-form"
           id="imageUrl"
           value={profilePic}
           onChange={(e) => setProfilePic(e.target.value)}
@@ -87,6 +91,7 @@ return (
     <div class="field">
     <input
           type="text"
+          className="sign-in-form"
           id="bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
@@ -97,6 +102,7 @@ return (
     <input
           type="text"
           id="location"
+          className="sign-in-form"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />

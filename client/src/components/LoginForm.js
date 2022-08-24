@@ -35,6 +35,7 @@ function LoginForm({ onLogin }) {
          <div className="field">
            <input
              id="username"
+             className="sign-in-form"
              type="name"
              placeholder="Username"
              value={username}
@@ -45,6 +46,7 @@ function LoginForm({ onLogin }) {
          <div className="field">
             <input 
                 id="password" 
+                className="sign-in-form"
                 type="password" 
                 placeholder="password" 
                 autoComplete="current-password"

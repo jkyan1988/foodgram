@@ -102,9 +102,9 @@ label {
 
 /* hiding placeholder in all browsers */
 
-// input::placeholder {
-//   // visibility: hidden;
-// }
+.sign-in-form::placeholder {
+  visibility: hidden;
+}
 
 /* hiding  placeholder in mozilla */
 .login-form ::-moz-placeholder {
@@ -117,7 +117,7 @@ input:not(:placeholder-shown) + label {
   font-size: 11px;
 }
 
-/* input padding increases if placeholder is not shown */
+// /* input padding increases if placeholder is not shown */
 input:not(:placeholder-shown) {
   padding-top: 14px;
   padding-bottom: 2px;
@@ -136,47 +136,8 @@ input:not(:placeholder-shown) {
   background: radial-gradient(#37d088,#243d36);
 }
 
-// .separator {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   color: #999;
-//   margin-top: 6px;
-// }
 
-// .separator .line {
-//   height: 1px;
-//   width: 40%;
-//   background-color: #dbdbdb;
-// }
 
-// .other {
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-// .fb-login-btn {
-//   margin: 1rem;
-//   border: 0;
-//   cursor: pointer;
-//   font-size: 14px;
-//   color: #385185;
-//   font-weight: 600;
-//   background: transparent;
-// }
-
-// .fb-icon {
-//   color: #385185;
-//   font-size: 1rem;
-//   padding-right: 1px;
-// }
-
-// .forgot-password {
-//   font-size: 11px;
-//   color: #003569;
-// }
 
 .signup {
   margin-bottom: 10px;
