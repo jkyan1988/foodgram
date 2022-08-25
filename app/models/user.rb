@@ -8,5 +8,5 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :bio, presence: true
     validates :profile_pic, presence: true
-    validates :password, presence: true
+    validates :password, presence: true, length: { minimum: 8 }
 end

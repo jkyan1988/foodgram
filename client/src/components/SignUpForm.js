@@ -26,6 +26,7 @@ function SignUpForm({ onLogin }) {
         password_confirmation: passwordConfirmation,
         profile_pic: profilePic,
         bio,
+        location,
       }),
     }).then((r) => {
       setIsLoading(false);

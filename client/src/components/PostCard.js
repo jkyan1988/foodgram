@@ -137,7 +137,7 @@ function PostCard( { selectedPost,
               height: '350',
               width: '100%',
               playerVars: {
-                            autoplay: 1,
+                            autoplay: 0,
                           },
           };
          
